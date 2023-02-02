@@ -34,8 +34,7 @@
             String error = (String)session.getAttribute("error");
             String emailError = (String)session.getAttribute("emailError");
             String passError = (String)session.getAttribute("passError");
-        %>
-        
+        %>        
         <div>
             <form class="" method="POST" action="/group4/RegisterServlet">
                 <table class ="tab">
@@ -68,7 +67,6 @@
                 
             </form>
             <% 
-
                 error = "";
                 passError = "";
                 emailError = "";

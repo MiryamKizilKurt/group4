@@ -71,8 +71,8 @@ public class LoginServlet extends HttpServlet {
         
         }else{
             session.setAttribute("error", "Account Does not Exist!");
-            request.getRequestDispatcher("user-main.jsp").include(request, response);
-            request.getRequestDispatcher("welcome.jsp").include(request, response);
+            request.getRequestDispatcher("login.jsp").include(request, response);
+           // request.getRequestDispatcher("welcome.jsp").include(request, response);
 
         }
     } 

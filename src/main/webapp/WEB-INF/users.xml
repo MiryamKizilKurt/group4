@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+    <user>
+        <ID>834281</ID>
+        <name>John Smith</name>
+        <email>john.smith@example.com</email>
+        <password>Helloo123</password>
+        <dob>2000-02-12</dob>
+    </user>
+    <user>
+        <ID>608493</ID>
+        <name>Alice Ming</name>
+        <email>alice.m@example.com</email>
+        <password>Helloo123</password>
+        <dob>1999-02-03</dob>
+    </user>
+</users>

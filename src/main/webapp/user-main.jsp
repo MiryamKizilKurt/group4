@@ -31,8 +31,7 @@
                             <td><a class="button" href="/group4/MainServlet">Account</a></td>
                             <td><a class="button" href="/group4/LogoutServlet">Logout</a></td>
                         </tr>                                                              
-                    </table>
-                    
+                    </table>                   
                 </div>
             </div>
         </nav>

@@ -19,13 +19,11 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author 236358
+ * @author 236349
  */
 public class RegisterServlet extends HttpServlet {
 
-   
 
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -46,18 +44,10 @@ public class RegisterServlet extends HttpServlet {
 
             }else{
 
-            //User userSql = userSqlDAO.getUser(email);
-            
-//            if(userSql != null){
-//                session.setAttribute("error", "User already exists");
-//                request.getRequestDispatcher("register.jsp").include(request, response);
-//
-//            }else{
                 userSqlDAO.create(name, email, password, dob);
                 User user = userSqlDAO.getUser(email);
                 session.setAttribute("user", user);
                 request.getRequestDispatcher("login.jsp").include(request, response);
-
            }  
             
         } catch (SQLException ex) {

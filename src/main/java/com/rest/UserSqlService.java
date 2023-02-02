@@ -21,13 +21,13 @@ import javax.xml.bind.JAXBException;
 
 /**
  *
- * @author 236358
+ * @author 236349
  */
 @Path("sqlapi")
 public class UserSqlService {
     
     @GET
-    @Path("users") //http://localhost:8080/labs/rest/sqlapi/users
+    @Path("users") //http://localhost:8080/group4/rest/sqlapi/users
     @Produces(MediaType.APPLICATION_XML)
     public Users getUsers() throws JAXBException, FileNotFoundException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
         UserSqlDAO userSqlDAO = new UserSqlDAO(new SqlDBConnector().connection());
@@ -37,7 +37,7 @@ public class UserSqlService {
     }
     
     @GET
-    @Path("user/ID/{ID}") //http://localhost:8080/labs/rest/sqlapi/user/ID/100000
+    @Path("user/ID/{ID}") //http://localhost:8080/group4/rest/sqlapi/user/ID/100000
     @Produces(MediaType.APPLICATION_XML)
     public Users getUser(@PathParam("ID") int ID) throws JAXBException, FileNotFoundException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
         UserSqlDAO userSqlDAO = new UserSqlDAO(new SqlDBConnector().connection());
@@ -47,4 +47,5 @@ public class UserSqlService {
         users.add(user);
         return users;
     }
+    
 }

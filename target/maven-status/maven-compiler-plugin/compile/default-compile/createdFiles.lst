@@ -2,9 +2,9 @@ com\model\Admins.class
 com\controller\LoginServlet.class
 com\model\dao\UserSqlDAO.class
 com\controller\ClickEmailLink.class
+com\controller\MainServlet.class
 com\rest\UserSqlService.class
 com\controller\DeleteServlet.class
-com\model\dao\Connection.class
 com\controller\RegisterServlet.class
 com\controller\AdminRegisterServlet.class
 com\model\Admin.class
@@ -14,5 +14,6 @@ com\model\dao\SqlDB.class
 com\model\User.class
 com\model\dao\SqlDBConnector.class
 com\controller\LogoutServlet.class
+com\controller\AccountServlet.class
 com\model\dao\AdminSqlDAO.class
 com\controller\UpdateStudentServlet.class
