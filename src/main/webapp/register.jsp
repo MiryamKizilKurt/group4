@@ -34,6 +34,7 @@
             String error = (String)session.getAttribute("error");
             String emailError = (String)session.getAttribute("emailError");
             String passError = (String)session.getAttribute("passError");
+            String dobError = (String)session.getAttribute("dobError");
         %>        
         <div>
             <form class="" method="POST" action="/group4/RegisterServlet">
@@ -53,8 +54,10 @@
                     <tr><td class="td">Name</td><td><input class="input" type="text" name="name" placeholder="Enter your name" required="name" /></td></tr>
                     <tr><td class="td">Email</td><td><input class="input" type="text" name="email" placeholder= "Enter your email" required="email"/><span class="message"><%= (emailError != null) ? emailError: "" %></span></td></tr>
                     <tr><td class="td">Password</td><td><input class="input" type="password" name="password" placeholder= "Enter your password" required="email"/><span class="message"><%= (passError != null) ? passError: "" %></span></td></tr>
-                    <tr><td class="td">DOB</td><td><input class="input" type="date" name="dob"/></td></tr>
+                    <tr><td class="td">DOB</td><td><input class="input" type="date" name="dob" placeholder= "Enter your dob" required="dob"/><span class="message"><%= (dobError != null) ? dobError: "" %></span></td></tr>
+
                     <tr>
+                        
                         <td></td>
                         <td>
                             <input class="button tabButton" type="submit" value="Register"/>
@@ -70,8 +73,10 @@
                 error = "";
                 passError = "";
                 emailError = "";
+                dobError = "";
                 session.setAttribute("emailError", emailError);
                 session.setAttribute("passError", passError);
+                session.setAttribute("dobError", dobError);
                 session.setAttribute("error", error);
             %>
         </div>

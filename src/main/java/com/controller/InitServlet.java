@@ -48,11 +48,12 @@ public class InitServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException  {
         HttpSession session = request.getSession();
         session.setAttribute("adminSqlDAO", adminSqlDAO);
         session.setAttribute("userSqlDAO", userSqlDAO);
         //session.setAttribute("blogSqlDAO", blogSqlDAO);
+        
     }
     
     @Override
