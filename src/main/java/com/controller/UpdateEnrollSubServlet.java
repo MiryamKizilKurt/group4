@@ -9,7 +9,6 @@ import com.model.Subject;
 import com.model.User;
 import com.model.dao.SubjectSqlDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +20,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author 236358
+ * @author 236325
  */
 public class UpdateEnrollSubServlet extends HttpServlet {
 
@@ -44,32 +43,37 @@ public class UpdateEnrollSubServlet extends HttpServlet {
                 //Subject newSubject = subjectSqlDAO.getEnrolledSubjects(subject1, subject2, subject3, subject4);
                 
                 if(subjectSqlDAO.getEnrollSubject(user.getID()) != null){
-                    session.setAttribute("subjectError", "Ready for update");
-                    request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);
+                    //if (sub1.equals(newSubject1) && sub2.equals(newSubject2) && sub3.equals(newSubject3) && sub4.equals(newSubject4)) {
+//                    session.setAttribute("subjectError", "Ready for update");
+//                    request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);
                      
-                }else if(subject1.equals(subject2) || subject1.equals(subject3) || subject1.equals(subject4)){
-                    session.setAttribute("subjectError", "Subject one is repeated");
-                    request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);
-                }
-                else if(subject2.equals(subject1) || subject2.equals(subject3) || subject2.equals(subject4)){
-                    session.setAttribute("subjectError", "Subject two is repeated");
-                    request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);
-                }
-                else if(subject3.equals(subject2) || subject3.equals(subject1) || subject3.equals(subject4)){
-                    session.setAttribute("subjectError", "Subject three is repeated");
-                    request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);
-                }
-                else if(subject4.equals(subject2) || subject4.equals(subject3) || subject4.equals(subject1)){
-                    session.setAttribute("subjectError", "Subject four is repeated");
-                    request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);
-                }            
-                else {
-                    subjectSqlDAO.updateEnrollSub(subject1, subject2, subject3, subject4, user.getID());
-                    Subject subject = subjectSqlDAO.getEnrolledSubjects(subject1, subject2, subject3, subject4);
-                    session.setAttribute("subject", subject);
-                    //TODO - If required, "Subject created successfully" message can be retained here or added to createSubject.jsp
-                    session.setAttribute("subjectError", "Subjects updated successfully");
-                    request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);
+                   if(subject1.equals(subject2) || subject1.equals(subject3) || subject1.equals(subject4)){
+                        session.setAttribute("subjectError", "Subject one is repeated");
+                        request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);
+                    }
+                    else if(subject2.equals(subject1) || subject2.equals(subject3) || subject2.equals(subject4)){
+                        session.setAttribute("subjectError", "Subject two is repeated");
+                        request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);
+                    }
+                    else if(subject3.equals(subject2) || subject3.equals(subject1) || subject3.equals(subject4)){
+                        session.setAttribute("subjectError", "Subject three is repeated");
+                        request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);
+                    }
+                    else if(subject4.equals(subject2) || subject4.equals(subject3) || subject4.equals(subject1)){
+                        session.setAttribute("subjectError", "Subject four is repeated");
+                        request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);
+                    }            
+                    else {
+                        subjectSqlDAO.updateEnrollSub(subject1, subject2, subject3, subject4, user.getID());
+                        Subject subject = subjectSqlDAO.getEnrolledSubjects(subject1, subject2, subject3, subject4);
+                        session.setAttribute("subject", subject);
+                        session.setAttribute("subjectError", "Subjects updated successfully");
+                        request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);
+                    }
+                   
+                }else {
+                    session.setAttribute("subjectError", "Something is not right!");
+//                  request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);
                 }
         } catch (SQLException ex) {
             Logger.getLogger(CreateSubjectServlet.class.getName()).log(Level.SEVERE, null, ex);

@@ -21,12 +21,15 @@ public class SubjectSqlDAO {
     private Statement st;
     private PreparedStatement updateSt;
     private String updateQuery = "UPDATE university.subjects SET SUBJECTNAME=?, SUBJECTDESC=? WHERE SUBJECTNAME=?";
+    private PreparedStatement updateEnrollSt;
+    private String updateEnrollQuery = "UPDATE university.subjectenrollment SET subject1=?, subject2=?, subject3=?, subject4=? WHERE ID=?";
     private PreparedStatement deleteSt;
     private String deleteQuery = "DELETE FROM university.subjects WHERE SUBJECTNAME=?";
     
     public SubjectSqlDAO(java.sql.Connection connection) throws SQLException {
         this.st = connection.createStatement();
         this.updateSt = connection.prepareStatement(updateQuery);
+        this.updateEnrollSt = connection.prepareStatement(updateEnrollQuery);
         this.deleteSt = connection.prepareStatement(deleteQuery);
     }
     
@@ -89,24 +92,22 @@ public class SubjectSqlDAO {
             String newSubject2 = rs.getString(4);
             String newSubject3 = rs.getString(5);
             String newSubject4 = rs.getString(6);
-
-            if (sub1.equals(newSubject1) && sub2.equals(newSubject2) && sub3.equals(newSubject3) && sub4.equals(newSubject4)) {
-                int enrollID = Integer.parseInt(rs.getString(1));
-                int userID = Integer.parseInt(rs.getString(2));
-                return new Subject(enrollID,userID, newSubject1, newSubject2, newSubject3, newSubject4);
-            }
+            int enrollID = Integer.parseInt(rs.getString(1));
+            int userID = Integer.parseInt(rs.getString(2));
+            return new Subject(enrollID,userID, newSubject1, newSubject2, newSubject3, newSubject4);
+            
         }
         return null;
     }
     
     //Update Student subjects
      public void updateEnrollSub(String sub1, String sub2, String sub3, String sub4, int ID) throws SQLException{
-        updateSt.setString(1, sub1);
-        updateSt.setString(2, sub2);
-        updateSt.setString(3, sub3);
-        updateSt.setString(4, sub4);
-        updateSt.setString(5, Integer.toString(ID));
-        int row = updateSt.executeUpdate();
+        updateEnrollSt.setString(1, sub1);
+        updateEnrollSt.setString(2, sub2);
+        updateEnrollSt.setString(3, sub3);
+        updateEnrollSt.setString(4, sub4);
+        updateEnrollSt.setString(5, Integer.toString(ID));
+        int row = updateEnrollSt.executeUpdate();
         System.out.println("Row "+row+" has been successflly updated");
     }
     

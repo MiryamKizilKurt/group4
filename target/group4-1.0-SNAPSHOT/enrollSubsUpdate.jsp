@@ -1,7 +1,7 @@
 <%-- 
-    Document   : updateEnrolledSubs
-    Created on : 06-Feb-2023, 4:20:39 PM
-    Author     : 236358
+    Document   : enrollSubject
+    Created on : 02-Feb-2023, 9:51:39 AM
+    Author     : 236325
 --%>
 
 <%@page import="com.model.User"%>
@@ -65,7 +65,11 @@
                         </tr>
                     </thead>
                         <tr>
-                            <td class="td">Subject One</td>
+                            <%
+                                for(Subject subject: subjectSqlDAO.getEnrolledSubs(user.getID())){   
+                            %>
+                            <td class="td"><%=subject.getSubject1()%></td>  
+                            <%}%>
                             <td>
                                 <select name="subject1" class="input">
                                     <%
@@ -78,7 +82,11 @@
                             </td>
                         </tr>
                     <tr>
-                        <td class="td">Subject Two</td>
+                        <%
+                                for(Subject subject: subjectSqlDAO.getEnrolledSubs(user.getID())){   
+                            %>
+                            <td class="td"><%=subject.getSubject2()%></td>  
+                            <%}%>
                         <td>
                                 <select name="subject2" class="input">
                                     <%
@@ -91,7 +99,11 @@
                         </tr>
                     <tr>
                     <tr>
-                        <td class="td">Subject Three</td>
+                        <%
+                                for(Subject subject: subjectSqlDAO.getEnrolledSubs(user.getID())){   
+                            %>
+                            <td class="td"><%=subject.getSubject3()%></td>  
+                            <%}%>
                         <td>
                                 <select name="subject3" class="input">
                                     <%
@@ -104,7 +116,11 @@
                         </tr>
                     <tr>
                     <tr>
-                        <td class="td">Subject Four</td>
+                        <%
+                                for(Subject subject: subjectSqlDAO.getEnrolledSubs(user.getID())){   
+                            %>
+                            <td class="td"><%=subject.getSubject4()%></td>  
+                            <%}%>
                         <td>
                                 <select name="subject4" class="input">
                                     <%

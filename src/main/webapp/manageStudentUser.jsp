@@ -1,9 +1,8 @@
 <%-- 
-    Document   : manageStudentUser
-    Created on : 03-Feb-2023, 1:48:36 PM
-    Author     : 236358
+    Document   : enrollSubject
+    Created on : 02-Feb-2023, 9:51:39 AM
+    Author     : 236325
 --%>
-
 <%@page import="com.model.Subject"%>
 <%@page import="com.model.dao.SubjectSqlDAO"%>
 <%@page import="com.model.User"%>
