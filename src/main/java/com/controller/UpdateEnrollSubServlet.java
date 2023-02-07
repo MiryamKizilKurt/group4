@@ -65,7 +65,7 @@ public class UpdateEnrollSubServlet extends HttpServlet {
                     }            
                     else {
                         subjectSqlDAO.updateEnrollSub(subject1, subject2, subject3, subject4, user.getID());
-                        Subject subject = subjectSqlDAO.getEnrolledSubjects(subject1, subject2, subject3, subject4);
+                        Subject subject = subjectSqlDAO.getEnrolledSubjects(user.getID());
                         session.setAttribute("subject", subject);
                         session.setAttribute("subjectError", "Subjects updated successfully");
                         request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);

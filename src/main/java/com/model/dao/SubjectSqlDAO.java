@@ -113,8 +113,8 @@ public class SubjectSqlDAO {
     }
     
      //Read Query - Read One/For Search/Filter
-    public Subject getEnrolledSubjects(String sub1, String sub2, String sub3, String sub4) throws SQLException {
-        String query = "SELECT * FROM university.subjectenrollment WHERE subject1='"+sub1+"',subject2='"+sub2+"',subject3='"+sub3+"',subject4='"+sub4+"'";
+    public Subject getEnrolledSubjects(int ID) throws SQLException {
+        String query = "SELECT * FROM university.subjectenrollment WHERE ID = "+ID;
         ResultSet rs = st.executeQuery(query);
         while (rs.next()) {
             String newSubject1 = rs.getString(3);
