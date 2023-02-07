@@ -21,6 +21,8 @@ com\model\Admin.class
 com\model\dao\SqlDB.class
 com\model\User.class
 com\model\dao\SqlDBConnector.class
+com\controller\EnrollSubjectServlet.class
 com\controller\LogoutServlet.class
 com\controller\AccountServlet.class
+com\controller\UpdateEnrollSubServlet.class
 com\controller\UpdateStudentServlet.class
