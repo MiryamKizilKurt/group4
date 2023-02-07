@@ -6,38 +6,67 @@
 package com.model.dao;
 
 import com.model.Subject;
+import com.model.Users;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.StringWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 /**
  *
  * @author 236356
  */
 public class SubjectSqlDAO {
+    
     private Statement st;
     private PreparedStatement updateSt;
     private String updateQuery = "UPDATE university.subjects SET SUBJECTNAME=?, SUBJECTDESC=? WHERE SUBJECTNAME=?";
     private PreparedStatement updateEnrollSt;
     private String updateEnrollQuery = "UPDATE university.subjectenrollment SET subject1=?, subject2=?, subject3=?, subject4=? WHERE ID=?";
     private PreparedStatement deleteSt;
-    private String deleteQuery = "DELETE FROM university.subjects WHERE SUBJECTNAME=?";
+    private String deleteQuery = "DELETE FROM university.subjects WHERE SUBJECTID=?";
+    private PreparedStatement deleteEnrolledSubjectSt;
+    private String deleteEnrollSubjectQuery = "UPDATE university.subjectEnrollment "
+            + "SET subject1 = CASE WHEN subject1=? THEN subject1 = NULL ELSE subject1 END, "
+            + "subject2 = CASE WHEN subject2=? THEN subject2 = NULL ELSE subject2 END, "
+            + "subject3 = CASE WHEN subject3=? THEN subject3 = NULL ELSE subject3 END, "
+            + "subject4 = CASE WHEN subject4=? THEN subject4 = NULL ELSE subject4 END;";
     
     public SubjectSqlDAO(java.sql.Connection connection) throws SQLException {
         this.st = connection.createStatement();
         this.updateSt = connection.prepareStatement(updateQuery);
         this.updateEnrollSt = connection.prepareStatement(updateEnrollQuery);
         this.deleteSt = connection.prepareStatement(deleteQuery);
+        this.deleteEnrolledSubjectSt = connection.prepareStatement(deleteEnrollSubjectQuery);
     }
+   
     
     //Create Query
     public void create(String name, String desc) throws SQLException {
         String columns = "INSERT INTO university.subjects(SUBJECTNAME,SUBJECTDESC)";
         String values = "VALUES('" + name + "','" + desc + "')";
         st.executeUpdate(columns + values);
+    }
+    
+    public Subject createSubject(String name,String desc) throws SQLException{
+       String columns = "INSERT INTO university.subjects(SUBJECTNAME,SUBJECTDESC)";
+        String values = "VALUES('" + name + "','" + desc +"')";
+        Subject existingSubject = getSubject(name);
+        if (existingSubject == null){
+            st.executeUpdate(columns + values);
+            return new Subject(name, desc);
+        }
+        else
+            return null;
     }
     
     public void enrollSubject(int ID, String sub1, String sub2, String sub3, String sub4) throws SQLException {
@@ -166,9 +195,18 @@ public class SubjectSqlDAO {
     }
    
     //Delete Query - by ID
-    public void delete(String deletesubjectName) throws SQLException{
-        deleteSt.setString(1, ""+deletesubjectName);
-        int row = deleteSt.executeUpdate();
-        System.out.println("Row "+row+" has been successflly deleted");
+    public void delete(int deletesubjectID) throws SQLException{
+        Subject subject = getSubject(deletesubjectID);
+        String subjectName = subject.getName();
+        deleteEnrolledSubjectSt.setString(1, subjectName);
+        deleteEnrolledSubjectSt.setString(2, subjectName);
+        deleteEnrolledSubjectSt.setString(3, subjectName);
+        deleteEnrolledSubjectSt.setString(4, subjectName);
+        int r = deleteEnrolledSubjectSt.executeUpdate();
+        
+        deleteSt.setString(1, ""+deletesubjectID);
+        int r1 = deleteSt.executeUpdate();
+        
+        System.out.println("Row "+r1+" has been successflly deleted");
     }
 }

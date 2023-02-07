@@ -46,7 +46,13 @@ public class Subject implements Serializable{
         this.subjectDesc = desc;
     
       }
-      public void update(int ID, String name, String desc){
+       public Subject(String name, String desc){
+        this.subjectName = name;
+        this.subjectDesc = desc;
+       
+       }
+      
+       public void update(int ID, String name, String desc){
         this.subjectID = ID;
         this.subjectName = name;
         this.subjectDesc = desc;

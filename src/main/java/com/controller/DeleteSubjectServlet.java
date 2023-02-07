@@ -33,26 +33,21 @@ public class DeleteSubjectServlet extends HttpServlet {
             HttpSession session = request.getSession();
             
             SubjectSqlDAO subjectSqlDAO = (SubjectSqlDAO) session.getAttribute("subjectSqlDAO");
-            String subjectNameRegEx = "^[a-zA-Z ]+$";
             
-            String deleteSubjectName = request.getParameter("deleteSubjectName");
+            int deleteSubjectID = Integer.parseInt(request.getParameter("deleteSubjectID"));
             
-            Subject subjectSql = subjectSqlDAO.getSubject(deleteSubjectName);
-            
-            if(!deleteSubjectName.matches(subjectNameRegEx)){
-                session.setAttribute("subjectError", deleteSubjectName + " is an incorrect subject name format" );
-                response.sendRedirect("deleteSubject.jsp");
-            }
-            else if(subjectSql == null){
-                session.setAttribute("subjectError", deleteSubjectName + " subject does not exists");
+            Subject subjectSql = subjectSqlDAO.getSubject(deleteSubjectID);
+
+             if(subjectSql == null){
+                session.setAttribute("subjectError", " Subject ID " + deleteSubjectID +  " does not exists");
                 request.getRequestDispatcher("deleteSubject.jsp").include(request, response);
                 
             }else{
-                subjectSqlDAO.delete(deleteSubjectName); //TODO - Execute Query to delete data from Enrollment table
-                Subject subject = subjectSqlDAO.getSubject(deleteSubjectName);
+                subjectSqlDAO.delete(deleteSubjectID);
+                Subject subject = subjectSqlDAO.getSubject(deleteSubjectID);
                 session.setAttribute("subject", subject);
-                //session.setAttribute("subjectError", "Subject creates successfully");
-                request.getRequestDispatcher("subjectsList.jsp").include(request, response);
+                session.setAttribute("subjectError", "Subject deleted successfully");
+                request.getRequestDispatcher("deleteSubject.jsp").include(request, response);
             }
         } catch (SQLException ex) {
             Logger.getLogger(CreateSubjectServlet.class.getName()).log(Level.SEVERE, null, ex);

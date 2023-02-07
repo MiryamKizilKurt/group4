@@ -69,8 +69,8 @@ public class UpdateSubjectServlet extends HttpServlet {
                 Subject subject = subjectSqlDAO.getSubject(newSubjectName);
                 session.setAttribute("subject", subject);
                 //TODO - If required, "Subject created successfully" message can be retained here or added to createSubject.jsp
-                //session.setAttribute("subjectError", "Subject creates successfully");
-                request.getRequestDispatcher("subjectsList.jsp").include(request, response);
+                session.setAttribute("subjectError", "Subject updated successfully");
+                request.getRequestDispatcher("updateSubject.jsp").include(request, response);
             }
         } catch (SQLException ex) {
             Logger.getLogger(CreateSubjectServlet.class.getName()).log(Level.SEVERE, null, ex);

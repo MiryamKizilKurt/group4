@@ -20,15 +20,6 @@
         <nav class="navbar navbar-dark bg-orange">
             <div class="contianer-fluid">
                 <div class="navbar-header">
-                    <!--                    <table>
-                                            <tr>
-                                                <td><h1 class="header">University</h1></td>
-                                                <td><a class="button" href="admin-main.jsp">GoBack</a></td>
-                                                <td><a class="button" href="index.jsp">Home</a></td>
-                                                <td><a class="button" href="/group4/LogoutServlet">logout</a></td>
-                                            </tr>                                                              
-                                        </table>-->
-
                 </div>
             </div>
         </nav>
@@ -47,7 +38,7 @@
                         </tr>
                         
                     </thead>
-                    <tr><td class="td">Subject Name</td><td><input class="input" type="text" name="deleteSubjectName" placeholder="Enter subject name to delete" required="deleteSubjectName" /></td></tr>
+                    <tr><td class="td">Subject ID</td><td><input class="input" type="number" name="deleteSubjectID" placeholder="Enter subject ID to delete" required="deleteSubjectID" onkeypress="clearStatus()" /></td></tr>
                     <tr>
                         <td>
                             <input class="button tabButton" type="submit" value="Delete"/>
@@ -60,6 +51,12 @@
                             <th></th>
                     </tr>
                 </table>
+                            <script>
+                                function clearStatus()
+                                {
+                                    session.setAttribute("subjectError", "");
+                                }
+                            </script>
             </form>
             <%
                 subjectError = "";

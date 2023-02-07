@@ -7,7 +7,6 @@ package com.rest;
 
 import com.model.Subject;
 import com.model.Subjects;
-import com.model.Users;
 import com.model.dao.SqlDBConnector;
 import com.model.dao.SubjectSqlDAO;
 import java.io.FileNotFoundException;
@@ -26,9 +25,9 @@ import javax.xml.bind.JAXBException;
  */
 @Path("subjectapi")
 public class SubjectSqlService {
-    
+     
     @GET
-    @Path("subjects") //http://localhost:8080/group4/rest/sqlapi/subjects
+    @Path("subjects") //http://localhost:8080/group4/rest/subjectapi/subjects
     @Produces(MediaType.APPLICATION_XML)
     public Subjects getSubjects() throws JAXBException, FileNotFoundException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
         SubjectSqlDAO subjectSqlDAO = new SubjectSqlDAO(new SqlDBConnector().connection());
@@ -38,7 +37,7 @@ public class SubjectSqlService {
     }
     
     @GET
-    @Path("subject/ID/{ID}") //http://localhost:8080/group4/rest/sqlapi/subject/ID/1000
+    @Path("subject/ID/{ID}") //http://localhost:8080/group4/rest/subjectapi/subject/ID/1000
     @Produces(MediaType.APPLICATION_XML)
     public Subjects getSubject(@PathParam("ID") int ID) throws JAXBException, FileNotFoundException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
         SubjectSqlDAO subjectSqlDAO = new SubjectSqlDAO(new SqlDBConnector().connection());
@@ -49,4 +48,14 @@ public class SubjectSqlService {
         return subjects;
     }
     
+    @GET
+    @Path("createSubject")//http://localhost:8080/group4/rest/subjectapi/createSubject
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public Subjects createSubject() throws JAXBException, FileNotFoundException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
+        SubjectSqlDAO subjectSqlDAO = new SubjectSqlDAO(new SqlDBConnector().connection());
+        Subject subject = subjectSqlDAO.createSubject("Business Management", "This subject is about BM skills");
+        Subjects subjects = new Subjects();
+        subjects.add(subject);
+        return subjects;
+    }
 }
