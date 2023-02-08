@@ -6,20 +6,12 @@
 package com.model.dao;
 
 import com.model.Subject;
-import com.model.Users;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.StringWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 
 /**
  *
@@ -68,78 +60,7 @@ public class SubjectSqlDAO {
         else
             return null;
     }
-    
-    public void enrollSubject(int ID, String sub1, String sub2, String sub3, String sub4) throws SQLException {
-        String columns = "INSERT INTO university.subjectenrollment(ID, subject1, subject2, subject3, subject4)";
-        String values = "VALUES('"+ID+"','"+sub1+"','"+sub2+"','"+sub3+"','"+sub4+"')";
-        st.executeUpdate(columns + values);
-    }
 
-     public Subject getEnrollSubject(int ID) throws SQLException {
-        String query = "SELECT * FROM university.subjectenrollment WHERE ID=" + ID;
-        ResultSet rs = st.executeQuery(query);
-        while (rs.next()) {
-            
-            int userID = Integer.parseInt(rs.getString(2));
-            if (ID == userID) {
-                int currentID = Integer.parseInt(rs.getString(1));
-                String sub1 = rs.getString(3);
-                String sub2 = rs.getString(4);
-                String sub3 = rs.getString(5);
-                String sub4 = rs.getString(6);
-                return new Subject(currentID, ID, sub1, sub2, sub3, sub4);
-            }
-        }
-        return null;
-    }
-    
-    public List<Subject> getEnrolledSubs(int ID) throws SQLException{
-        String query = "SELECT * FROM university.subjectenrollment WHERE ID=" + ID;
-        ResultSet rs = st.executeQuery(query);
-        
-        List<Subject> subList = new ArrayList();
-        
-        while (rs.next()) {
-            int currentID = Integer.parseInt(rs.getString(1));
-            int userID = Integer.parseInt(rs.getString(2));
-            String sub1 = rs.getString(3);
-            String sub2 = rs.getString(4);
-            String sub3 = rs.getString(5);
-            String sub4 = rs.getString(6);
-            subList.add(new Subject(currentID, userID, sub1, sub2, sub3, sub4));
-
-        }
-        return subList;
-    }
-    
-     //Read Query - Read One/For Search/Filter
-    public Subject getEnrolledSubjects(int ID) throws SQLException {
-        String query = "SELECT * FROM university.subjectenrollment WHERE ID = "+ID;
-        ResultSet rs = st.executeQuery(query);
-        while (rs.next()) {
-            String newSubject1 = rs.getString(3);
-            String newSubject2 = rs.getString(4);
-            String newSubject3 = rs.getString(5);
-            String newSubject4 = rs.getString(6);
-            int enrollID = Integer.parseInt(rs.getString(1));
-            int userID = Integer.parseInt(rs.getString(2));
-            return new Subject(enrollID,userID, newSubject1, newSubject2, newSubject3, newSubject4);
-            
-        }
-        return null;
-    }
-    
-    //Update Student subjects
-     public void updateEnrollSub(String sub1, String sub2, String sub3, String sub4, int ID) throws SQLException{
-        updateEnrollSt.setString(1, sub1);
-        updateEnrollSt.setString(2, sub2);
-        updateEnrollSt.setString(3, sub3);
-        updateEnrollSt.setString(4, sub4);
-        updateEnrollSt.setString(5, Integer.toString(ID));
-        int row = updateEnrollSt.executeUpdate();
-        System.out.println("Row "+row+" has been successflly updated");
-    }
-    
     //Read Query - Read One
     public Subject getSubject(int ID) throws SQLException {
         String query = "SELECT * FROM university.subjects WHERE SUBJECTID=" + ID;

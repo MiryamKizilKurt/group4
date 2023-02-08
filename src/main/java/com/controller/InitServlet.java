@@ -6,6 +6,7 @@
 package com.controller;
 
 import com.model.dao.AdminSqlDAO;
+import com.model.dao.EnrollSubSqlDAO;
 //import com.model.dao.Connection;
 import com.model.dao.SqlDBConnector;
 import com.model.dao.SubjectSqlDAO;
@@ -26,6 +27,7 @@ public class InitServlet extends HttpServlet {
     private UserSqlDAO userSqlDAO;
     private AdminSqlDAO adminSqlDAO;
     private SubjectSqlDAO subjectSqlDAO;
+    private EnrollSubSqlDAO enrollSubSqlDAO;
     private SqlDBConnector dBConnector;
     private Connection connection;
 
@@ -37,6 +39,7 @@ public class InitServlet extends HttpServlet {
             userSqlDAO = new UserSqlDAO(connection);
             adminSqlDAO = new AdminSqlDAO(connection);
             subjectSqlDAO = new SubjectSqlDAO(connection);
+            enrollSubSqlDAO = new EnrollSubSqlDAO(connection);
         } catch (ClassNotFoundException | SQLException | InstantiationException | IllegalAccessException | IOException ex) {
             Logger.getLogger(InitServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -49,6 +52,7 @@ public class InitServlet extends HttpServlet {
             session.setAttribute("adminSqlDAO", adminSqlDAO);
             session.setAttribute("userSqlDAO", userSqlDAO);
             session.setAttribute("subjectSqlDAO", subjectSqlDAO);
+            session.setAttribute("enrollSubSqlDAO", enrollSubSqlDAO);
         } catch (NullPointerException ex) {
             System.out.println("something went wrong");
         }

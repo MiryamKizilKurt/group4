@@ -7,7 +7,7 @@ package com.controller;
 
 import com.model.Subject;
 import com.model.User;
-import com.model.dao.SubjectSqlDAO;
+import com.model.dao.EnrollSubSqlDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -31,7 +31,7 @@ public class UpdateEnrollSubServlet extends HttpServlet {
         try {
             
             
-            SubjectSqlDAO subjectSqlDAO = (SubjectSqlDAO) session.getAttribute("subjectSqlDAO");
+            EnrollSubSqlDAO enrollSubSqlDAO = (EnrollSubSqlDAO) session.getAttribute("enrollSubSqlDAO");
             User user = (User) session.getAttribute("user");
             
             String subject1 = request.getParameter("subject1");//TODO - somewhere need to do setParameter
@@ -42,7 +42,7 @@ public class UpdateEnrollSubServlet extends HttpServlet {
                  
                 //Subject newSubject = subjectSqlDAO.getEnrolledSubjects(subject1, subject2, subject3, subject4);
                 
-                if(subjectSqlDAO.getEnrollSubject(user.getID()) != null){
+                if(enrollSubSqlDAO.getEnrollSubject(user.getID()) != null){
                     //if (sub1.equals(newSubject1) && sub2.equals(newSubject2) && sub3.equals(newSubject3) && sub4.equals(newSubject4)) {
 //                    session.setAttribute("subjectError", "Ready for update");
 //                    request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);
@@ -64,8 +64,8 @@ public class UpdateEnrollSubServlet extends HttpServlet {
                         request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);
                     }            
                     else {
-                        subjectSqlDAO.updateEnrollSub(subject1, subject2, subject3, subject4, user.getID());
-                        Subject subject = subjectSqlDAO.getEnrolledSubjects(user.getID());
+                        enrollSubSqlDAO.updateEnrollSub(subject1, subject2, subject3, subject4, user.getID());
+                        Subject subject = enrollSubSqlDAO.getEnrolledSubjects(user.getID());
                         session.setAttribute("subject", subject);
                         session.setAttribute("subjectError", "Subjects updated successfully");
                         request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);

@@ -4,11 +4,11 @@
     Author     : 236325
 --%>
 
+<%@page import="com.model.dao.EnrollSubSqlDAO"%>
 <%@page import="com.model.User"%>
 <%@page import="com.model.Subjects"%>
 <%@page import="com.model.Subject"%>
 <%@page import="java.util.List"%>
-<%@page import="com.model.dao.SubjectSqlDAO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@include file="footer.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -44,7 +44,7 @@
         </nav>
         <h1></h1>
         <% 
-            SubjectSqlDAO subjectSqlDAO = (SubjectSqlDAO) session.getAttribute("subjectSqlDAO");
+            EnrollSubSqlDAO enrollSubSqlDAO = (EnrollSubSqlDAO) session.getAttribute("enrollSubSqlDAO");
             String subjectError = (String) session.getAttribute("subjectError");
             User user = (User) session.getAttribute("user");         
         %>
@@ -68,8 +68,9 @@
                             <td class="td">Subject One</td>
                             <td>
                                 <select name="subject1" class="input">
+                                    <option>Select Subject One</option>
                                     <%
-                                        for (Subject subject : subjectSqlDAO.getSubjects()) {
+                                        for (Subject subject : enrollSubSqlDAO.getSubjects()) {
                                         
                                     %>
                                         <option><%=subject.getName()%></option>
@@ -81,8 +82,9 @@
                         <td class="td">Subject Two</td>
                         <td>
                                 <select name="subject2" class="input">
+                                    <option>Select Subject Two</option>
                                     <%
-                                        for (Subject subject : subjectSqlDAO.getSubjects()) {
+                                        for (Subject subject : enrollSubSqlDAO.getSubjects()) {
                                     %>
                                         <option><%=subject.getName()%></option>
                                     <%}%>
@@ -94,8 +96,9 @@
                         <td class="td">Subject Three</td>
                         <td>
                                 <select name="subject3" class="input">
+                                    <option>Select Subject Three</option>
                                     <%
-                                        for (Subject subject : subjectSqlDAO.getSubjects()) {
+                                        for (Subject subject : enrollSubSqlDAO.getSubjects()) {
                                     %>
                                         <option><%=subject.getName()%></option>
                                     <%}%>
@@ -107,8 +110,9 @@
                         <td class="td">Subject Four</td>
                         <td>
                                 <select name="subject4" class="input">
+                                    <option>Select Subject Four</option>
                                     <%
-                                        for (Subject subject : subjectSqlDAO.getSubjects()) {
+                                        for (Subject subject : enrollSubSqlDAO.getSubjects()) {
                                     %>
                                         <option><%=subject.getName()%></option>
                                     <%}%>

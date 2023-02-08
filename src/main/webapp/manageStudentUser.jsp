@@ -3,8 +3,8 @@
     Created on : 02-Feb-2023, 9:51:39 AM
     Author     : 236325
 --%>
+<%@page import="com.model.dao.EnrollSubSqlDAO"%>
 <%@page import="com.model.Subject"%>
-<%@page import="com.model.dao.SubjectSqlDAO"%>
 <%@page import="com.model.User"%>
 <%@page import="com.model.dao.UserSqlDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%><!DOCTYPE html>
@@ -55,10 +55,10 @@
 
                 %>
                 <% 
-                    SubjectSqlDAO subjectSqlDAO = (SubjectSqlDAO) session.getAttribute("subjectSqlDAO");
+                    EnrollSubSqlDAO enrollSubSqlDAO = (EnrollSubSqlDAO) session.getAttribute("enrollSubSqlDAO");
                     User user= (User)session.getAttribute("user");
                     
-                    for(Subject subject: subjectSqlDAO.getEnrolledSubs(user.getID())){
+                    for(Subject subject: enrollSubSqlDAO.getEnrolledSubs(user.getID())){
                    
                 %>    
                          <tr>

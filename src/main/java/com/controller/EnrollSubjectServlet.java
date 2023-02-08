@@ -6,7 +6,7 @@
 package com.controller;
 
 import com.model.User;
-import com.model.dao.SubjectSqlDAO;
+import com.model.dao.EnrollSubSqlDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -30,7 +30,7 @@ public class EnrollSubjectServlet extends HttpServlet {
        
             HttpSession session = request.getSession();
             
-            SubjectSqlDAO subjectSqlDAO = (SubjectSqlDAO) session.getAttribute("subjectSqlDAO");
+            EnrollSubSqlDAO enrollSubSqlDAO = (EnrollSubSqlDAO) session.getAttribute("enrollSubSqlDAO");
             User user = (User) session.getAttribute("user");
             
             String subject1 = request.getParameter("subject1");//TODO - somewhere need to do setParameter
@@ -40,7 +40,7 @@ public class EnrollSubjectServlet extends HttpServlet {
             
    
             try {
-                if(subjectSqlDAO.getEnrollSubject(user.getID()) != null){
+                if(enrollSubSqlDAO.getEnrollSubject(user.getID()) != null){
                     session.setAttribute("subjectError", "Four Subjects already exists");
                     request.getRequestDispatcher("enrollSubject.jsp").include(request, response);
                      
@@ -61,7 +61,7 @@ public class EnrollSubjectServlet extends HttpServlet {
                     request.getRequestDispatcher("enrollSubject.jsp").include(request, response);
                 }
                 else {
-                    subjectSqlDAO.enrollSubject(user.getID(), subject1, subject2,subject3,subject4);
+                    enrollSubSqlDAO.enrollSubject(user.getID(), subject1, subject2,subject3,subject4);
                     session.setAttribute("subjectError", "Subjects added successfully");
                     session.setAttribute("user", user);
                     request.getRequestDispatcher("enrollSubject.jsp").include(request, response);

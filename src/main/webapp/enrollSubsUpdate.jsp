@@ -4,11 +4,11 @@
     Author     : 236325
 --%>
 
+<%@page import="com.model.dao.EnrollSubSqlDAO"%>
 <%@page import="com.model.User"%>
 <%@page import="com.model.Subjects"%>
 <%@page import="com.model.Subject"%>
 <%@page import="java.util.List"%>
-<%@page import="com.model.dao.SubjectSqlDAO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@include file="footer.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -44,7 +44,7 @@
         </nav>
         <h1></h1>
         <% 
-            SubjectSqlDAO subjectSqlDAO = (SubjectSqlDAO) session.getAttribute("subjectSqlDAO");
+            EnrollSubSqlDAO enrollSubSqlDAO = (EnrollSubSqlDAO) session.getAttribute("enrollSubSqlDAO");
             String subjectError = (String) session.getAttribute("subjectError");
             User user = (User) session.getAttribute("user");         
         %>
@@ -65,32 +65,35 @@
                         </tr>
                     </thead>
                         <tr>
-                            <%
-                                for(Subject subject: subjectSqlDAO.getEnrolledSubs(user.getID())){   
-                            %>
-                            <td class="td"><%=subject.getSubject1()%></td>  
-                            <%}%>
+                            <td class="td">Subject One</td>
                             <td>
                                 <select name="subject1" class="input">
                                     <%
-                                        for (Subject subject : subjectSqlDAO.getSubjects()) {
+                                        for(Subject subject: enrollSubSqlDAO.getEnrolledSubs(user.getID())){   
+                                    %>
+                                            <option><%=subject.getSubject1()%></option>
+                                    <%}%>
+                                    <%
+                                        for (Subject subject : enrollSubSqlDAO.getSubjects()) {
                                       
                                     %>
+                                        
                                         <option><%=subject.getName()%></option>
                                     <%}%>
                                 </select>
                             </td>
                         </tr>
                     <tr>
-                        <%
-                                for(Subject subject: subjectSqlDAO.getEnrolledSubs(user.getID())){   
-                            %>
-                            <td class="td"><%=subject.getSubject2()%></td>  
-                            <%}%>
-                        <td>
+                        <td class="td">Subject Two</td>
+                            <td>
                                 <select name="subject2" class="input">
                                     <%
-                                        for (Subject subject : subjectSqlDAO.getSubjects()) {
+                                        for(Subject subject: enrollSubSqlDAO.getEnrolledSubs(user.getID())){   
+                                    %>
+                                            <option><%=subject.getSubject2()%></option>
+                                    <%}%>
+                                    <%
+                                        for (Subject subject : enrollSubSqlDAO.getSubjects()) {
                                     %>
                                         <option><%=subject.getName()%></option>
                                     <%}%>
@@ -99,15 +102,16 @@
                         </tr>
                     <tr>
                     <tr>
-                        <%
-                                for(Subject subject: subjectSqlDAO.getEnrolledSubs(user.getID())){   
-                            %>
-                            <td class="td"><%=subject.getSubject3()%></td>  
-                            <%}%>
-                        <td>
+                        <td class="td">Subject Three</td>
+                            <td>
                                 <select name="subject3" class="input">
                                     <%
-                                        for (Subject subject : subjectSqlDAO.getSubjects()) {
+                                        for(Subject subject: enrollSubSqlDAO.getEnrolledSubs(user.getID())){   
+                                    %>
+                                            <option><%=subject.getSubject3()%></option>
+                                    <%}%>
+                                    <%
+                                        for (Subject subject : enrollSubSqlDAO.getSubjects()) {
                                     %>
                                         <option><%=subject.getName()%></option>
                                     <%}%>
@@ -116,15 +120,16 @@
                         </tr>
                     <tr>
                     <tr>
-                        <%
-                                for(Subject subject: subjectSqlDAO.getEnrolledSubs(user.getID())){   
-                            %>
-                            <td class="td"><%=subject.getSubject4()%></td>  
-                            <%}%>
-                        <td>
+                        <td class="td">Subject Four</td>
+                            <td>
                                 <select name="subject4" class="input">
                                     <%
-                                        for (Subject subject : subjectSqlDAO.getSubjects()) {
+                                        for(Subject subject: enrollSubSqlDAO.getEnrolledSubs(user.getID())){   
+                                    %>
+                                            <option><%=subject.getSubject4()%></option>
+                                    <%}%>
+                                    <%
+                                        for (Subject subject : enrollSubSqlDAO.getSubjects()) {
                                     %>
                                         <option><%=subject.getName()%></option>
                                     <%}%>

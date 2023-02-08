@@ -4,6 +4,7 @@ com\model\dao\UserSqlDAO.class
 com\controller\MainServlet.class
 com\model\Subjects.class
 com\controller\DeleteServlet.class
+com\model\dao\EnrollSubSqlDAO.class
 com\controller\InitServlet.class
 com\model\Subject.class
 com\model\Users.class
