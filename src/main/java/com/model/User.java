@@ -68,17 +68,10 @@ public class User implements Serializable{
         return this.ID == other.ID;
     }
     
-//    public void add(String text){
-//        this.blogs.add(new Blog(blogs.size()+1, text));
-//    }
-    
-//    public List<Blog> getBlogs() {
-//        return blogs;
-//    }
-//
-//    public void setBlogs(List<Blog> blogs) {
-//        this.blogs = blogs;
-//    }
+    public boolean matchName(String name){
+        return this.name.equals(name);
+    }
+
 
     public int getID() {
         return ID;
