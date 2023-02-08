@@ -30,31 +30,30 @@ public class DeleteServlet extends HttpServlet {
         HttpSession session = request.getSession();
         UserSqlDAO userSqlDAO = (UserSqlDAO) session.getAttribute("userSqlDAO");
         String emailView = (String) session.getAttribute("emailView");
-
+        
         User user = null;
-        if (emailView != null) {
-            try {
+        
+        try {
+            
+            if (emailView != null) {
                 user = userSqlDAO.getUser(emailView);
-            } catch (SQLException ex) {
-                Logger.getLogger(DeleteServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } 
+            else {
+                user = (User) session.getAttribute("user");
             }
-        } else {
-            user = (User) session.getAttribute("user");
-        }
 
-        if (user != null) {
-            try {
-                userSqlDAO.delete(user.getID());
-            } catch (SQLException ex) {
-                Logger.getLogger(DeleteServlet.class.getName()).log(Level.SEVERE, null, ex);
+            if (user != null) {
+                  userSqlDAO.delete(user.getID()); 
             }
-        }
-
-        if (emailView != null) {
-            request.getRequestDispatcher("admin.jsp").include(request, response);
-        } else {
-            session.invalidate();
-            request.getRequestDispatcher("index.jsp").include(request, response);
+            if (emailView != null) {
+                request.getRequestDispatcher("admin.jsp").include(request, response);
+            } else {
+                session.invalidate();
+                request.getRequestDispatcher("index.jsp").include(request, response);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DeleteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

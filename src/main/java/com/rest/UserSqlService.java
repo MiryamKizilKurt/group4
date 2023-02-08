@@ -48,4 +48,16 @@ public class UserSqlService {
         return users;
     }
     
+    @GET
+    @Path("adduser") //http://localhost:8080/group4/rest/userapi/adduser
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public Users addUser() throws JAXBException, FileNotFoundException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
+        
+        UserSqlDAO userSqlDAO = new UserSqlDAO(new SqlDBConnector().connection());
+        User user = userSqlDAO.addUser("av", "av.d@university.com", "hello126", "2000-02-02");
+        Users users = new Users();
+        users.add(user);
+        return users;
+    }
+    
 }

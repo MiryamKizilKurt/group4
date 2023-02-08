@@ -24,11 +24,14 @@ public class UserSqlDAO {
     private String updateQuery = "UPDATE university.users SET NAME=?, PASSWORD=?, DOB=? WHERE ID=?";
     private PreparedStatement deleteSt;
     private String deleteQuery = "DELETE FROM university.users WHERE ID=?";
+     private PreparedStatement deleteEnrollSubsSt;
+    private String deleteEnrollSubsQuery = "DELETE FROM university.subjectenrollment WHERE ID=?";
     
     public UserSqlDAO(Connection connection) throws SQLException {
         this.st = connection.createStatement();
         this.updateSt = connection.prepareStatement(updateQuery);
         this.deleteSt = connection.prepareStatement(deleteQuery);
+        this.deleteEnrollSubsSt = connection.prepareStatement(deleteEnrollSubsQuery);
     }
     
     //Create Query
@@ -132,8 +135,11 @@ public class UserSqlDAO {
    
     //Delete Query - by ID
     public void delete(int ID) throws SQLException{
+        deleteEnrollSubsSt.setString(1, ""+ID);
+        int enrollRow = deleteEnrollSubsSt.executeUpdate();
         deleteSt.setString(1, ""+ID);
         int row = deleteSt.executeUpdate();
         System.out.println("Row "+row+" has been successflly deleted");
+        System.out.println("Row "+enrollRow+" has been successflly deleted");
     }
 }

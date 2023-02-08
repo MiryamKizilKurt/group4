@@ -20,12 +20,21 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body onload="startTime()">
-        <%!
-            User user;
-        %>
-       
-
+         <nav class="navbar navbar-dark bg-orange">
+            <div class="contianer-fluid">
+                <div class="navbar-header">
+                    <table>
+                        <tr>
+                            <td><h1 class="header">Fronter</h1></td>
+                            <td><a class="button" href="index.jsp">Home</a></td>
+                            <td><a class="button" href="studentsList.jsp">GoBack</a></td>
+                        </tr>                                                              
+                    </table>
+                </div>
+            </div>
+        </nav>
         <%
+            User user;
             UserSqlDAO userSqlDAO = (UserSqlDAO) session.getAttribute("userSqlDAO");
             String emailView = (String) session.getAttribute("emailView");
             if(emailView != null){
@@ -37,28 +46,18 @@
                 userSqlDAO.delete(user.getID());
             }
         %>
-        <nav class="navbar navbar-dark bg-orange">
-            <div class="contianer-fluid">
-                <div class="navbar-header">
-                    <table>
-                        <tr>
-                            <td><h1 class="header">Fronter</h1></td>
-                            <td><a class="button" href="index.jsp">Home</a></td>
-                        </tr>                                                              
-                    </table>
-                </div>
-            </div>
-        </nav>
-       <% if(user != null){%>
-        <h2 class="center"><%= user.getName()%> record has been deleted!</h2>
+       
+        <% if(user != null){%>
+            <h2 class="center"><%= user.getName()%> record has been deleted!
+                <%if(emailView != null) {%>
+                    <a class="button" href="studentsList.jsp">GoBack</a>
+                <%}%>
+            </h2>
         <%}else{%>
-                <h2 class="center"> record has been deleted!</h2>
-
+            <h2 class="center"> record has been deleted!</h2>
+            <%session.invalidate();%>
         <%}%>
-        <%
-            session.invalidate();
-
-        %>
+        
 
     </body>
 </html>
