@@ -38,7 +38,7 @@
       
         <%
             User user = (User) session.getAttribute("user");
-            String emailView = request.getParameter("emailView");
+            String email = request.getParameter("email");
             String submitted = request.getParameter("submitted");
             String submit = (String)session.getAttribute("submit");
             String passError = (String)session.getAttribute("passError");
@@ -69,10 +69,10 @@
                     <tr><td class="td">DOB</td><td><input class="input" type="date" name="dob" value="<%= user.getDOB()%>"/><span class="message"><%= (dobError != null) ? dobError: "" %></span></td></tr>
                     <tr><td><input class="input" type="hidden" name="submitted" value="submitted" %></td></tr>
                     <tr>
-                        <%if(emailView != null) {%>
-                        <td><a class="button tabButton" href="index.jsp">Home</a></td>     
+                        <%if(email != null) {%>
+                            <td><a class="button" href="studentsList.jsp">StudentList</a></td>
                         <%}else {%>
-                        <td><a class="button" href="studentsList.jsp">StudentList</a></td>
+                            <td><a class="button tabButton" href="user-main.jsp">Student-Feature</a></td>
                         <%}%>
                         <td>
                             <input class="button tabButton" type="submit" value="Update" />
