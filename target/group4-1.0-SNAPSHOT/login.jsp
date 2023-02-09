@@ -52,16 +52,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                    <td class="td">Role</td>
-                    <td>
-                        <select class="input">
-                            <option>Select your role</option>
-                            <option name="student">Student</option>
-                            <option name="admin">Admin</option>
-                        </select>
-                    </td>
-                    </tr>
+                    
                     <tr><td class="td">Email </td><td><input class="input" type="text" name="email" placeholder="Enter your email" required="email"/><span  class="message"><%= (emailError != null) ? emailError : ""%></span></td></tr>
                     <tr><td class="td">Password </td><td><input class="input" type="password" name="password" placeholder="Enter your password" required="password"/><span class="message"><%= (passError != null) ? passError : ""%></span></td></tr>
                     <tr>

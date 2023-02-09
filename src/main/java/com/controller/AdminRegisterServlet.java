@@ -89,7 +89,7 @@ public class AdminRegisterServlet extends HttpServlet {
             }else{
                 session.setAttribute("error", "Student added success");
                 userSqlDAO.create(name, email, password, dob, ROLE);
-                User user = userSqlDAO.getUser(email);
+                User user = userSqlDAO.getRole(ROLE);
                 session.setAttribute("user", user);
                 request.getRequestDispatcher("addStudent.jsp").include(request, response);
            }  

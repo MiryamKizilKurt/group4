@@ -4,6 +4,7 @@
     Author     : 236358
 --%>
 
+<%@page import="com.model.User"%>
 <%@include file="footer.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -39,6 +40,8 @@
             String passError = (String)session.getAttribute("passError");
             String nameError = (String)session.getAttribute("nameError");
             String dobError = (String)session.getAttribute("dobError");
+            String role = (String) session.getAttribute("ROLE");
+
         %>
         
         <div>
@@ -54,8 +57,16 @@
                             <th><span class="message"><%= (error != null) ? error : "" %></span></span></th>
                             <th></th>
                         </tr>
-                        </tr>
                     </thead>
+                  
+                    <tr>
+                        <td class="td">Role</td>
+                        <td>
+                            <select class="input" name="ROLE">
+                                <option value="student">Student</option>
+                            </select>
+                        </td>
+                    </tr>
                     <tr><td class="td">Name</td><td><input class="input" type="text" name="name" placeholder="Enter your name" required="name" /><span class="message"><%= (nameError != null) ? nameError: "" %></span></td></tr>
                     <tr><td class="td">Email</td><td><input class="input" type="text" name="email" placeholder= "Enter your email" required="email"/><span class="message"><%= (emailError != null) ? emailError: "" %></span></td></tr>
                     <tr><td class="td">Password</td><td><input class="input" type="password" name="password" placeholder= "Enter your password" required="email"/><span class="message"><%= (passError != null) ? passError: "" %></span></td></tr>

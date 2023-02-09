@@ -27,7 +27,7 @@
                     <table>
                         <tr>
                             <td><h1 class="header">University</h1></td>
-                            <td><a class="button" href="register.jsp">Add Student</a></td>
+                            <td><a class="button" href="addStudent.jsp">Add Student</a></td>
                             <td><a class="button" href="studentsList.jsp">Student List</a></td>
                             <td><a class="button" href="subjectsList.jsp">Subject Management</a></td>
                             <td><a class="button" href="/group4/LogoutServlet">Logout</a></td>
