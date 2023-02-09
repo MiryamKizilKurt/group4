@@ -18,24 +18,27 @@ public class Admin implements Serializable{
     private String email;
     private String password;
     private String DOB;
+    private String ROLE;
     
     public Admin() {
     }
 
-    public Admin(int ID, String name, String email, String password, String DOB) {
+    public Admin(int ID, String name, String email, String password, String DOB, String ROLE) {
         this.ID = ID;
         this.name = name;
         this.email = email;
         this.password = password;
         this.DOB = DOB;
+        this.ROLE = ROLE;
     }    
 
-    public Admin(String name, String email, String password, String DOB) {
+    public Admin(String name, String email, String password, String DOB, String ROLE) {
         this.ID = (new Random()).nextInt(999999);
         this.name = name;
         this.email = email;
         this.password = password;
         this.DOB = DOB;
+        this.ROLE = ROLE;
     }
     
     public boolean login(String email, String password){
@@ -92,6 +95,14 @@ public class Admin implements Serializable{
 
     public void setDOB(String DOB) {
         this.DOB = DOB;
+    }
+    
+    public String getROLE() {
+        return ROLE;
+    }
+
+    public void setROLE(String ROLE) {
+        this.DOB = ROLE;
     }
     
 }

@@ -48,6 +48,7 @@ public class UpdateStudentServlet extends HttpServlet {
                 String email = request.getParameter("email");
                 String password = request.getParameter("password");
                 String dob = request.getParameter("dob");
+                String ROLE = request.getParameter("ROLE");
                 emailView = (String) session.getAttribute("emailView");
                 
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -84,7 +85,7 @@ public class UpdateStudentServlet extends HttpServlet {
                 }
                 else {
                     session.setAttribute("submit", "Student updated successfully");
-                    user.update(ID, name, email, password, dob);
+                    user.update(ID, name, email, password, dob, ROLE);
                     userSqlDAO.update(name, password, dob, ID);
                     session.setAttribute("user", user);
                     request.getRequestDispatcher("updateStudent.jsp").include(request, response);

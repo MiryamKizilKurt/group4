@@ -35,6 +35,7 @@
             String emailError = (String)session.getAttribute("emailError");
             String passError = (String)session.getAttribute("passError");
             String dobError = (String)session.getAttribute("dobError");
+            String role = (String)session.getAttribute("ROLE");
         %>        
         <div>
             <form class="" method="POST" action="/group4/RegisterServlet">
@@ -51,6 +52,14 @@
                         </tr>
                         </tr>
                     </thead>
+                    <td class="td">Role</td>
+                            <td>
+                                <select class="input" name="ROLE">
+                                    <option>Select your role</option>
+                                    <option value="student">Student</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                    </td>
                     <tr><td class="td">Name</td><td><input class="input" type="text" name="name" placeholder="Enter your name" required="name" /></td></tr>
                     <tr><td class="td">Email</td><td><input class="input" type="text" name="email" placeholder= "Enter your email" required="email"/><span class="message"><%= (emailError != null) ? emailError: "" %></span></td></tr>
                     <tr><td class="td">Password</td><td><input class="input" type="password" name="password" placeholder= "Enter your password" required="email"/><span class="message"><%= (passError != null) ? passError: "" %></span></td></tr>

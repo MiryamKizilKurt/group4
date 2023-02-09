@@ -14,25 +14,27 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "user")
 public class User implements Serializable{
-     private int ID;
+    private int ID;
     private String name;
     private String email;
     private String password;
     private String DOB;
+    private String ROLE;
     
 
     public User() {
     }
 
-    public User(int ID, String name, String email, String password, String DOB) {
+    public User(int ID, String name, String email, String password, String DOB, String ROLE) {
         this.ID = ID;
         this.name = name;
         this.email = email;
         this.password = password;
         this.DOB = DOB;
+        this.ROLE = ROLE;
     }
 
-    public User(String name, String email, String password, String DOB) {
+    public User(String name, String email, String password, String DOB, String ROLE) {
         this.ID = (new Random()).nextInt(999999);
         this.name = name;
         this.email = email;
@@ -40,12 +42,13 @@ public class User implements Serializable{
         this.DOB = DOB;
     }
     
-    public void update(int ID, String name, String email, String password, String DOB){
+    public void update(int ID, String name, String email, String password, String DOB, String ROLE){
         this.ID = ID;
         this.name = name;
         this.email = email;
         this.password = password;
         this.DOB = DOB;
+        this.ROLE = ROLE;
     }
 
 //    public void addAll(List<Blog> temp){
@@ -111,5 +114,13 @@ public class User implements Serializable{
 
     public void setDOB(String DOB) {
         this.DOB = DOB;
+    }
+    
+    public String getROLE() {
+        return ROLE;
+    }
+
+    public void setROLE(String ROLE) {
+        this.DOB = ROLE;
     }
 }

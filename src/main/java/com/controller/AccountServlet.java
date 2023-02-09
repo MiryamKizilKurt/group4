@@ -45,6 +45,7 @@ public class AccountServlet extends HttpServlet {
                 String email = request.getParameter("email");
                 String password = request.getParameter("password");
                 String dob = request.getParameter("dob");
+                String ROLE = request.getParameter("ROLE");
                 emailView = (String) session.getAttribute("emailView");
 
                 if (emailView != null) {
@@ -53,7 +54,7 @@ public class AccountServlet extends HttpServlet {
                     user = (User) session.getAttribute("user");
                 }
 
-                user.update(ID, name, email, password, dob);
+                user.update(ID, name, email, password, dob, ROLE);
                 userSqlDAO.update(name, password, dob, ID);
                 session.setAttribute("user", user);
                 

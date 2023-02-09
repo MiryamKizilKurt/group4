@@ -24,7 +24,7 @@ public class UserSqlDAO {
     private String updateQuery = "UPDATE university.users SET NAME=?, PASSWORD=?, DOB=? WHERE ID=?";
     private PreparedStatement deleteSt;
     private String deleteQuery = "DELETE FROM university.users WHERE ID=?";
-     private PreparedStatement deleteEnrollSubsSt;
+    private PreparedStatement deleteEnrollSubsSt;
     private String deleteEnrollSubsQuery = "DELETE FROM university.subjectenrollment WHERE ID=?";
     
     public UserSqlDAO(Connection connection) throws SQLException {
@@ -35,18 +35,18 @@ public class UserSqlDAO {
     }
     
     //Create Query
-    public void create(String name, String email, String password, String dob) throws SQLException {
-        String columns = "INSERT INTO university.users(NAME,EMAIL,PASSWORD,DOB)";
-        String values = "VALUES('" + name + "','" + email + "','" + password + "','" + dob + "')";
+    public void create(String name, String email, String password, String dob, String ROLE) throws SQLException {
+        String columns = "INSERT INTO university.users(NAME,EMAIL,PASSWORD,DOB,ROLE)";
+        String values = "VALUES('" + name + "','" + email + "','" + password + "','" + dob + "' ,'" + ROLE + "')";
         st.executeUpdate(columns + values);
     }
     
-    public User addUser(String name, String email,String password, String dob) throws SQLException{
-       String columns = "INSERT INTO university.users(NAME,EMAIL,PASSWORD,DOB)";
-        String values = "VALUES('" + name + "','" + email + "','" + password + "','" + dob + "')";
+    public User addUser(String name, String email,String password, String dob , String ROLE) throws SQLException{
+       String columns = "INSERT INTO university.users(NAME,EMAIL,PASSWORD,DOB,ROLE)";
+        String values = "VALUES('" + name + "','" + email + "','" + password + "','" + dob + "' ,'" + ROLE + "')";
         st.executeUpdate(columns + values);
        
-        return new User(name, email, password, dob);
+        return new User(name, email, password, dob, ROLE);
         
     }
     
@@ -62,7 +62,8 @@ public class UserSqlDAO {
                 String email = rs.getString(3);
                 String password = rs.getString(4);
                 String dob = rs.getString(5);
-                return new User(ID, name, email, password, dob);
+                String ROLE = rs.getString(6);
+                return new User(ID, name, email, password, dob, ROLE);
             }
         }
         return null;
@@ -81,7 +82,26 @@ public class UserSqlDAO {
                 String name = rs.getString(2);
                 String password = rs.getString(4);
                 String dob = rs.getString(5);
-                return new User(ID, name, email, password, dob);
+                String ROLE = rs.getString(6);
+                return new User(ID, name, email, password, dob, ROLE);
+            }
+        }
+        return null;
+    }
+    
+    public User getRole(String ROLE) throws SQLException {
+        String query = "SELECT * FROM university.users WHERE ROLE='"+ROLE+"'";
+        ResultSet rs = st.executeQuery(query);
+        while (rs.next()) {
+            String currentRole = rs.getString(6);
+
+            if (ROLE.equals(currentRole)) {
+                int ID = Integer.parseInt(rs.getString(1));
+                String name = rs.getString(2);
+                String email = rs.getString(3);
+                String password = rs.getString(4);
+                String dob = rs.getString(5);
+                return new User(ID, name, email, password, dob, ROLE);
             }
         }
         return null;
@@ -99,7 +119,8 @@ public class UserSqlDAO {
                 int ID = Integer.parseInt(rs.getString(1));
                 String name = rs.getString(2);               
                 String dob = rs.getString(5);
-                return new User(ID, name, email, password, dob);
+                String ROLE = rs.getString(6);
+                return new User(ID, name, email, password, dob, ROLE);
             }
         }
         return null;
@@ -117,7 +138,8 @@ public class UserSqlDAO {
             String email = rs.getString(3);
             String password = rs.getString(4);
             String dob = rs.getString(5);
-           temp.add(new User(ID, name, email, password, dob));
+            String ROLE = rs.getString(6);
+           temp.add(new User(ID, name, email, password, dob, ROLE));
         }    
         return temp;
     }
@@ -142,4 +164,5 @@ public class UserSqlDAO {
         System.out.println("Row "+row+" has been successflly deleted");
         System.out.println("Row "+enrollRow+" has been successflly deleted");
     }
+    
 }

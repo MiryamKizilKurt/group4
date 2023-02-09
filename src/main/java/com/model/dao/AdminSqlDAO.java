@@ -6,6 +6,7 @@
 package com.model.dao;
 
 import com.model.Admin;
+import com.model.User;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,9 +26,9 @@ public class AdminSqlDAO {
     }
      
      //Create Query
-    public void create(String name, String email, String password, String dob) throws SQLException {
-        String columns = "INSERT INTO university.admins(NAME,EMAIL,PASSWORD,DOB)";
-        String values = "VALUES('" + name + "','" + email + "','" + password + "','" + dob + "')";
+    public void create(String name, String email, String password, String dob, String ROLE) throws SQLException {
+        String columns = "INSERT INTO university.admins(NAME,EMAIL,PASSWORD,DOB,ROLE)";
+         String values = "VALUES('" + name + "','" + email + "','" + password + "','" + dob + "' ,'" + ROLE + "')";
         st.executeUpdate(columns + values);
     }
      //Read Query - Read One
@@ -42,7 +43,8 @@ public class AdminSqlDAO {
                 String email = rs.getString(3);
                 String password = rs.getString(4);
                 String dob = rs.getString(5);
-                return new Admin(ID, name, email, password, dob);
+                String ROLE = rs.getString(6);
+                return new Admin(ID, name, email, password, dob, ROLE);
             }
         }
         return null;
@@ -61,7 +63,8 @@ public class AdminSqlDAO {
                 
                 String password = rs.getString(4);
                 String dob = rs.getString(5);
-                return new Admin(ID, name, email, password, dob);
+                String ROLE = rs.getString(6);
+                return new Admin(ID, name, email, password, dob, ROLE);
             }
         }
         return null;
@@ -79,7 +82,8 @@ public class AdminSqlDAO {
                 int ID = Integer.parseInt(rs.getString(1));
                 String name = rs.getString(2);               
                 String dob = rs.getString(5);
-                return new Admin(ID, name, email, password, dob);
+                String ROLE = rs.getString(6);
+                return new Admin(ID, name, email, password, dob, ROLE);
             }
         }
         return null;
@@ -97,8 +101,27 @@ public class AdminSqlDAO {
             String email = rs.getString(3);
             String password = rs.getString(4);
             String dob = rs.getString(5);
-           temp.add(new Admin(ID, name, email, password, dob));
+            String ROLE = rs.getString(6);
+           temp.add(new Admin(ID, name, email, password, dob,ROLE));
         }    
         return temp;
+    }
+    
+        public Admin getRole(String ROLE) throws SQLException {
+        String query = "SELECT * FROM university.admins WHERE ROLE='"+ROLE+"'";
+        ResultSet rs = st.executeQuery(query);
+        while (rs.next()) {
+            String currentRole = rs.getString(6);
+
+            if (ROLE.equals(currentRole)) {
+                int ID = Integer.parseInt(rs.getString(1));
+                String name = rs.getString(2);
+                String email = rs.getString(3);
+                String password = rs.getString(4);
+                String dob = rs.getString(5);
+                return new Admin(ID, name, email, password, dob, ROLE);
+            }
+        }
+        return null;
     }
 }

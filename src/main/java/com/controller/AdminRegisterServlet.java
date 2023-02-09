@@ -43,6 +43,7 @@ public class AdminRegisterServlet extends HttpServlet {
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             String dob = request.getParameter("dob");
+            String ROLE = request.getParameter("ROLE");
             
              // To apply the dob interval between 18 and 50 yo
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -87,7 +88,7 @@ public class AdminRegisterServlet extends HttpServlet {
 
             }else{
                 session.setAttribute("error", "Student added success");
-                userSqlDAO.create(name, email, password, dob);
+                userSqlDAO.create(name, email, password, dob, ROLE);
                 User user = userSqlDAO.getUser(email);
                 session.setAttribute("user", user);
                 request.getRequestDispatcher("addStudent.jsp").include(request, response);

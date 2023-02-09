@@ -5,7 +5,9 @@
  */
 package com.controller;
 
+import com.model.Admin;
 import com.model.User;
+import com.model.dao.AdminSqlDAO;
 import com.model.dao.UserSqlDAO;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -31,11 +33,12 @@ public class RegisterServlet extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             UserSqlDAO userSqlDAO = (UserSqlDAO) session.getAttribute("userSqlDAO");
-
+            AdminSqlDAO adminSqlDAO = (AdminSqlDAO) session.getAttribute("adminSqlDAO");
             String name = request.getParameter("name");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             String dob = request.getParameter("dob");
+            String ROLE = request.getParameter("ROLE");
             
             // To apply the dob interval between 18 and 50 yo
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -50,9 +53,15 @@ public class RegisterServlet extends HttpServlet {
             
             
             User userSql = userSqlDAO.getUser(email);
+            Admin adminSql = adminSqlDAO.getAdmin(email);
 
             if (userSql != null) {
-               session.setAttribute("error", "User already exists");
+               session.setAttribute("error", "Student already exists");
+               request.getRequestDispatcher("register.jsp").include(request, response);
+            }
+            
+            if (adminSql != null) {
+               session.setAttribute("error", "Admin already exists");
                request.getRequestDispatcher("register.jsp").include(request, response);
             }
             
@@ -62,11 +71,19 @@ public class RegisterServlet extends HttpServlet {
                 
             
             } else {
-
-                userSqlDAO.create(name, email, password, dob);
-                User user = userSqlDAO.getUser(email);
+                if (ROLE.equals("student")) {
+                userSqlDAO.create(name, email, password, dob, ROLE);
+                User user = userSqlDAO.getRole(ROLE);
                 session.setAttribute("user", user);
                 request.getRequestDispatcher("login.jsp").include(request, response);
+                }
+                if(ROLE.equals("admin"))
+                    {
+                adminSqlDAO.create(name, email, password, dob, ROLE);
+                Admin admin = adminSqlDAO.getRole(ROLE);
+                session.setAttribute("admin", admin);
+                request.getRequestDispatcher("login.jsp").include(request, response);
+                }
             }
 
         } catch (SQLException ex) {

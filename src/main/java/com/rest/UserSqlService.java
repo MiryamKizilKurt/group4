@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.rest;
-
 import com.model.User;
 import com.model.Users;
 import com.model.dao.SqlDBConnector;
@@ -54,7 +53,7 @@ public class UserSqlService {
     public Users addUser() throws JAXBException, FileNotFoundException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
         
         UserSqlDAO userSqlDAO = new UserSqlDAO(new SqlDBConnector().connection());
-        User user = userSqlDAO.addUser("av", "av.d@university.com", "hello126", "2000-02-02");
+        User user = userSqlDAO.addUser("av", "av.d@university.com", "hello126", "2000-02-02", "student");
         Users users = new Users();
         users.add(user);
         return users;

@@ -32,6 +32,8 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String ROLE = request.getParameter("ROLE");
+
         String emailRegEx = "([a-zA-Z]+)[._-]([a-zA-Z]+)@university.com";
         String passRegEx = "[a-z]{5,15}\\d{1,3}";
 
