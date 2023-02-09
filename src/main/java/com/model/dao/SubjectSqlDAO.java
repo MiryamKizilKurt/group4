@@ -22,10 +22,10 @@ public class SubjectSqlDAO {
     private Statement st;
     private PreparedStatement updateSt;
     private String updateQuery = "UPDATE university.subjects SET SUBJECTNAME=?, SUBJECTDESC=? WHERE SUBJECTNAME=?";
-    private PreparedStatement updateEnrollSt;
-    private String updateEnrollQuery = "UPDATE university.subjectenrollment SET subject1=?, subject2=?, subject3=?, subject4=? WHERE ID=?";
+    
     private PreparedStatement deleteSt;
     private String deleteQuery = "DELETE FROM university.subjects WHERE SUBJECTID=?";
+    
     private PreparedStatement deleteEnrolledSubjectSt;
     private String deleteEnrollSubjectQuery = "UPDATE university.subjectEnrollment "
             + "SET subject1 = CASE WHEN subject1=? THEN subject1 = NULL ELSE subject1 END, "
@@ -33,12 +33,19 @@ public class SubjectSqlDAO {
             + "subject3 = CASE WHEN subject3=? THEN subject3 = NULL ELSE subject3 END, "
             + "subject4 = CASE WHEN subject4=? THEN subject4 = NULL ELSE subject4 END;";
     
+     private PreparedStatement updateEnrolledSubjectSt;
+    private String updateEnrollSubjectQuery = "UPDATE university.subjectEnrollment "
+            + "SET subject1 = REPLACE(subject1,?,?), "
+            + "subject2 = REPLACE(subject2,?,?), "
+            + "subject3 = REPLACE(subject3,?,?), "
+            + "subject4 = REPLACE(subject4,?,?)";
+    
     public SubjectSqlDAO(java.sql.Connection connection) throws SQLException {
         this.st = connection.createStatement();
         this.updateSt = connection.prepareStatement(updateQuery);
-        this.updateEnrollSt = connection.prepareStatement(updateEnrollQuery);
         this.deleteSt = connection.prepareStatement(deleteQuery);
         this.deleteEnrolledSubjectSt = connection.prepareStatement(deleteEnrollSubjectQuery);
+        this.updateEnrolledSubjectSt = connection.prepareStatement(updateEnrollSubjectQuery);
     }
    
     
@@ -106,12 +113,23 @@ public class SubjectSqlDAO {
         return temp;
     }
     
-    //Update Query (Name, Password) by ID
+ //Update function that takes new subject name to update Subject and enrollment tables
     public void update(String oldSubjectName, String newSubjectName, String newSubjectDesc) throws SQLException{
         updateSt.setString(3, oldSubjectName);
         updateSt.setString(1, newSubjectName);
         updateSt.setString(2, newSubjectDesc);
         int row = updateSt.executeUpdate();
+  
+        updateEnrolledSubjectSt.setString(1, oldSubjectName);
+        updateEnrolledSubjectSt.setString(2, newSubjectName);
+        updateEnrolledSubjectSt.setString(3, oldSubjectName);
+        updateEnrolledSubjectSt.setString(4, newSubjectName);
+        updateEnrolledSubjectSt.setString(5, oldSubjectName);
+        updateEnrolledSubjectSt.setString(6, newSubjectName);
+        updateEnrolledSubjectSt.setString(7, oldSubjectName);
+        updateEnrolledSubjectSt.setString(8, newSubjectName);
+        int row1 = updateEnrolledSubjectSt.executeUpdate();
+        
         System.out.println("Row "+row+" has been successflly updated");
     }
    

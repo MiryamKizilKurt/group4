@@ -31,15 +31,15 @@ public class CreateSubjectServlet extends HttpServlet {
             HttpSession session = request.getSession();
             
             SubjectSqlDAO subjectSqlDAO = (SubjectSqlDAO) session.getAttribute("subjectSqlDAO");
-            String subjectNameRegEx = "^[a-zA-Z ]+$";
+            String subjectNameRegEx = "^[a-zA-Z]+[\\/\\- .]?[a-zA-Z]+";
             
-            String subjectName = request.getParameter("subjectName");//TODO - somewhere need to do setParameter
-            String subjectDesc = request.getParameter("subjectDesc");//TODO - somewhere need to do setParameter
+            String subjectName = request.getParameter("subjectName");
+            String subjectDesc = request.getParameter("subjectDesc");
             
             Subject subjectSql = subjectSqlDAO.getSubject(subjectName);
             
             if(!subjectName.matches(subjectNameRegEx)){
-                session.setAttribute("subjectError", "Incorrect Subject name format");//TODO - Create subjectError somewhere, refer AdminRegisterServlet
+                session.setAttribute("subjectError", " "+subjectName+" - Incorrect Subject format");
                 response.sendRedirect("createSubject.jsp");
             }
             else if(subjectSql != null){
@@ -50,7 +50,6 @@ public class CreateSubjectServlet extends HttpServlet {
                 subjectSqlDAO.create(subjectName, subjectDesc);
                 Subject subject = subjectSqlDAO.getSubject(subjectName);
                 session.setAttribute("subject", subject);
-                //TODO - If required, "Subject created successfully" message can be retained here or added to createSubject.jsp
                 session.setAttribute("subjectError", "Subject creates successfully");
                 request.getRequestDispatcher("createSubject.jsp").include(request, response);
             }

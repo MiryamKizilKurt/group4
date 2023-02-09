@@ -31,10 +31,10 @@ public class UpdateSubjectServlet extends HttpServlet {
             HttpSession session = request.getSession();
             
             SubjectSqlDAO subjectSqlDAO = (SubjectSqlDAO) session.getAttribute("subjectSqlDAO");
-            String subjectNameRegEx = "^[a-zA-Z ]+$";
+            String subjectNameRegEx = "^[a-zA-Z]+[\\/\\- .]?[a-zA-Z]+";
             
-            String oldSubjectName = request.getParameter("oldSubjectName");//TODO - somewhere need to do setParameter
-            String newSubjectName = request.getParameter("newSubjectName");//TODO - somewhere need to do setParameter
+            String oldSubjectName = request.getParameter("oldSubjectName");
+            String newSubjectName = request.getParameter("newSubjectName");
             String newSubjectDesc = request.getParameter("newSubjectDesc");
 
             
@@ -43,16 +43,16 @@ public class UpdateSubjectServlet extends HttpServlet {
             
             if(!oldSubjectName.matches(subjectNameRegEx)){
                 if(!newSubjectName.matches(subjectNameRegEx)){
-                    session.setAttribute("subjectError", oldSubjectName + " " + newSubjectName + " " + "are an incorrect subject name format");
+                    session.setAttribute("subjectError", oldSubjectName + " " + newSubjectName + " " + " - Incorrect Subject format");
                     response.sendRedirect("updateSubject.jsp");
                 }
                 else {
-                    session.setAttribute("subjectError", oldSubjectName + " is an incorrect subject name format");//TODO - Create subjectError somewhere, refer AdminRegisterServlet
+                    session.setAttribute("subjectError", oldSubjectName + " - Incorrect Subject format");
                     response.sendRedirect("updateSubject.jsp");
                 }
             }
             else if(!newSubjectName.matches(subjectNameRegEx)){
-                session.setAttribute("subjectError", newSubjectName + " is an incorrect subject name or format");//TODO - Create subjectError somewhere, refer AdminRegisterServlet
+                session.setAttribute("subjectError", newSubjectName + " - Incorrect Subject format");
                 response.sendRedirect("updateSubject.jsp");
             }
             
@@ -68,7 +68,6 @@ public class UpdateSubjectServlet extends HttpServlet {
                 subjectSqlDAO.update(oldSubjectName, newSubjectName, newSubjectDesc);
                 Subject subject = subjectSqlDAO.getSubject(newSubjectName);
                 session.setAttribute("subject", subject);
-                //TODO - If required, "Subject created successfully" message can be retained here or added to createSubject.jsp
                 session.setAttribute("subjectError", "Subject updated successfully");
                 request.getRequestDispatcher("updateSubject.jsp").include(request, response);
             }
