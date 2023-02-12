@@ -21,6 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author 236356
  */
+
+// To do CRUD operation on subjects by admin
 public class DeleteSubjectServlet extends HttpServlet {
 
     @Override

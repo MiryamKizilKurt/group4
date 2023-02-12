@@ -22,6 +22,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author 236358
  */
+
+// To allow admin to search subjects by ID
+
 public class SearchSubjectServlet extends HttpServlet {
 
     

@@ -22,6 +22,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author 236325
  */
+
+// To allow the user(student) to update the enrolled subject/subjects
 public class UpdateEnrollSubServlet extends HttpServlet {
 
     @Override
@@ -34,18 +36,14 @@ public class UpdateEnrollSubServlet extends HttpServlet {
             EnrollSubSqlDAO enrollSubSqlDAO = (EnrollSubSqlDAO) session.getAttribute("enrollSubSqlDAO");
             User user = (User) session.getAttribute("user");
             
-            String subject1 = request.getParameter("subject1");//TODO - somewhere need to do setParameter
+            String subject1 = request.getParameter("subject1");
             String subject2 = request.getParameter("subject2");
-            String subject3 = request.getParameter("subject3");//TODO - somewhere need to do setParameter
+            String subject3 = request.getParameter("subject3");
             String subject4 = request.getParameter("subject4");
          
                  
-                //Subject newSubject = subjectSqlDAO.getEnrolledSubjects(subject1, subject2, subject3, subject4);
                 
                 if(enrollSubSqlDAO.getEnrollSubject(user.getID()) != null){
-                    //if (sub1.equals(newSubject1) && sub2.equals(newSubject2) && sub3.equals(newSubject3) && sub4.equals(newSubject4)) {
-//                    session.setAttribute("subjectError", "Ready for update");
-//                    request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);
                      
                    if(subject1.equals(subject2) || subject1.equals(subject3) || subject1.equals(subject4)){
                         session.setAttribute("subjectError", "Subject one is repeated");
@@ -73,7 +71,6 @@ public class UpdateEnrollSubServlet extends HttpServlet {
                    
                 }else {
                     session.setAttribute("subjectError", "Something is not right!");
-//                  request.getRequestDispatcher("enrollSubsUpdate.jsp").include(request, response);
                 }
         } catch (SQLException ex) {
             Logger.getLogger(CreateSubjectServlet.class.getName()).log(Level.SEVERE, null, ex);

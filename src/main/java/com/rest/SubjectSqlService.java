@@ -23,9 +23,13 @@ import javax.xml.bind.JAXBException;
  *
  * @author 236349
  */
+
+// API calls for subject object
 @Path("subjectapi")
 public class SubjectSqlService {
-     
+    
+    
+    // To get the list of subjects
     @GET
     @Path("subjects") //http://localhost:8080/group4/rest/subjectapi/subjects
     @Produces(MediaType.APPLICATION_XML)
@@ -36,6 +40,7 @@ public class SubjectSqlService {
         return subjects;
     }
     
+    // To get a subject by ID 
     @GET
     @Path("subject/ID/{ID}") //http://localhost:8080/group4/rest/subjectapi/subject/ID/1000
     @Produces(MediaType.APPLICATION_XML)
@@ -48,6 +53,7 @@ public class SubjectSqlService {
         return subjects;
     }
     
+    // To add a subject by ID
     @GET
     @Path("createSubject")//http://localhost:8080/group4/rest/subjectapi/createSubject
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})

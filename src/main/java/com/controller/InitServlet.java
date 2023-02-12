@@ -7,7 +7,6 @@ package com.controller;
 
 import com.model.dao.AdminSqlDAO;
 import com.model.dao.EnrollSubSqlDAO;
-//import com.model.dao.Connection;
 import com.model.dao.SqlDBConnector;
 import com.model.dao.SubjectSqlDAO;
 import com.model.dao.UserSqlDAO;
@@ -31,11 +30,12 @@ public class InitServlet extends HttpServlet {
     private SqlDBConnector dBConnector;
     private Connection connection;
 
+    // To create the connection between the controllers and SqlDB tables (Workbench)
     @Override
     public void init() {
         try {
             dBConnector = new SqlDBConnector();
-            connection = dBConnector.connection();//opening a connection with database
+            connection = dBConnector.connection();
             userSqlDAO = new UserSqlDAO(connection);
             adminSqlDAO = new AdminSqlDAO(connection);
             subjectSqlDAO = new SubjectSqlDAO(connection);
@@ -44,7 +44,8 @@ public class InitServlet extends HttpServlet {
             Logger.getLogger(InitServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    // To set the values to the SqlDAO 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     try {
@@ -57,7 +58,8 @@ public class InitServlet extends HttpServlet {
             System.out.println("something went wrong");
         }
     }
-
+    
+    // To destroy the session 
     @Override
     public void destroy() {
         try {

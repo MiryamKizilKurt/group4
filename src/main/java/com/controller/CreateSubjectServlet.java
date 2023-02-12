@@ -21,6 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author 236356
  */
+
+// To create subjects as an admin 
 public class CreateSubjectServlet extends HttpServlet {
 
     @Override
@@ -37,6 +39,11 @@ public class CreateSubjectServlet extends HttpServlet {
             String subjectDesc = request.getParameter("subjectDesc");
             
             Subject subjectSql = subjectSqlDAO.getSubject(subjectName);
+            
+            if(subjectName.isEmpty()){
+            session.setAttribute("subjectError", "Subject name cannot be empty");
+            response.sendRedirect("createSubject.jsp");
+            }
             
             if(!subjectName.matches(subjectNameRegEx)){
                 session.setAttribute("subjectError", " "+subjectName+" - Incorrect Subject format");

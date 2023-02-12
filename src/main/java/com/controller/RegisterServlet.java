@@ -25,6 +25,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author 236349
  */
+
+// To register a user(student) or admin into the sustem using appropriate regExes
 public class RegisterServlet extends HttpServlet {
 
     @Override
@@ -48,9 +50,11 @@ public class RegisterServlet extends HttpServlet {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             java.util.Date date = formatter.parse(dob);
             java.sql.Date sqlDate = new java.sql.Date(date.getTime()); 
+            
             // Parses the start valid birth date
             java.util.Date dt1 = formatter.parse("1972-02-06");
             java.sql.Date sqlStartDate = new java.sql.Date(dt1.getTime()); 
+            
             // Parses the final valid birth date
             java.util.Date dt2 = formatter.parse("2005-02-05");
             java.sql.Date sqlFinalDate = new java.sql.Date(dt2.getTime()); 

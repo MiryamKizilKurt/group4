@@ -23,6 +23,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author 236349
  */
+
+// To allow the user(student) to update her/his info
+ 
 public class UpdateInfoStudentServlet extends HttpServlet {
 
     @Override

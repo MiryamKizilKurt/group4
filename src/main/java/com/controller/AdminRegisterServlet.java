@@ -26,8 +26,8 @@ import javax.servlet.http.HttpSession;
  */
 public class AdminRegisterServlet extends HttpServlet {
 
-    
-    
+    // This is the servlet to allow the admin for student registration
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -51,10 +51,11 @@ public class AdminRegisterServlet extends HttpServlet {
             java.sql.Date sqlStartDate, sqlFinalDate;
             
             date = formatter.parse(dob);
-            //sqlDate = new java.sql.Date(date.getTime()); 
+            
             // Parses the start valid birth date
             dt1 = formatter.parse("1972-02-06");
             sqlStartDate = new java.sql.Date(dt1.getTime()); 
+            
             // Parses the final valid birth date
             dt2 = formatter.parse("2005-02-05");
             sqlFinalDate = new java.sql.Date(dt2.getTime());

@@ -13,10 +13,10 @@ import java.sql.SQLException;
  *
  * @author 236358
  */
+// To initiate the connection between the SqlDB and the application
 public class SqlDBConnector extends SqlDB{
     private Connection connection;
     public SqlDBConnector() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException{
-        //Class.forName(driver);
         this.connection = super.openConnection();
     }
     

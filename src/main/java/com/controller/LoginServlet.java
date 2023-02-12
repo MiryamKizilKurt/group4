@@ -24,6 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author 236358
  */
+// To login a user(student) or admin  
 public class LoginServlet extends HttpServlet {
 
     @Override
@@ -74,7 +75,6 @@ public class LoginServlet extends HttpServlet {
         }else{
             session.setAttribute("error", "Account does not exist!");
             request.getRequestDispatcher("login.jsp").include(request, response);
-           // request.getRequestDispatcher("welcome.jsp").include(request, response);
 
         }
     } 

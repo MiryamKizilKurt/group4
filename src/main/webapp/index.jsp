@@ -1,11 +1,12 @@
 <%-- 
-    Document   : index3
+    Document   : index
     Created on : 07-Feb-2023, 4:24:52 PM
     Author     : 236349
+    Project authors in alphabetical order: Miryam BOOZARJMEHR, Rashed ELHAM, Priyanka MESHRAM, Abdul Bashir Omar
 --%>
 
 <!DOCTYPE html>
-<img src="Happyblue.jpg" alt="Trulli" width="500" height="333">
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -144,7 +145,7 @@
         <div class="mySlides fade">
             <img src="https://www.stthomas.edu/_media-library/_images/commencement/stthomas-commencement-undergraduate.jpg" alt="Image" height="565" width="1000">
             <div class = "topcorner" style="color:#cc6600">
-                <p><strong>Make a real impact in science and tech</strong></p>
+                <p><strong>SIUA UNIVERSITY</strong></p>
             </div>            
         </div>
 
@@ -157,8 +158,8 @@
 
         <div class="mySlides fade">
             <img src="https://diversityuk.org/wp-content/uploads/2019/06/Handshake.jpg" alt="Image" height="565" width="1000">
-            <div class = "topcorner" style="color:#cc6600">
-                <p><strong>Number one university in industry partnership</strong></p>
+            <div class = "topcorner1" style="color:#cc6600">
+                <p><strong>Become a skilled full stack developer</strong></p>
             </div> 
         </div>
 
@@ -189,22 +190,21 @@
             <li>                                   
                 <a href="staff.jsp">                   
                     <i class="fa fa-user fa-lg"></i>
-                    <span class="nav-text">Our staff</span>
+                    <span class="nav-text">Our Staff</span>
                 </a>
             </li>
 
             <li>                                   
                 <a href="students.jsp">                   
                     <i class="fa fa-user fa-lg"></i>
-                    <span class="nav-text">Our students</span>
+                    <span class="nav-text">Our Students</span>
                 </a>
             </li>
 
-
             <li>                                   
-                <a href="https://www.ust.com/au">                   
-                    <i class="fa fa-lightbulb-o fa-lg"></i>
-                    <span class="nav-text">Industry facilitator</span>
+                <a href="courses.jsp">                   
+                    <i class="fa fa-user fa-lg"></i>
+                    <span class="nav-text">Courses We Offer</span>
                 </a>
             </li>
 
@@ -225,15 +225,15 @@
             <li class="darkerli">
                 <a href="https://www.macquarie.com.au/?utm_source=google&utm_medium=search&utm_campaign=all_fp&gclid=CjwKCAiA85efBhBbEiwAD7oLQD3jE0ELqDyZ3dlKwno7djk4w5MDyV7Hcc-2Xc-cNAxSsCaWW0CTohoCFTsQAvD_BwE&gclsrc=aw.ds">
                     <i class="fa fa-desktop fa-lg"></i>
-                    <span class="nav-text">Industry and Tech partners</span>
+                    <span class="nav-text">Our Industry and Tech partner</span>
                 </a>
             </li>
 
 
             <li class="darkerli">
-                <a href="https://www.facebook.com/profile.php?id=100089953997828">
+                <a href="https://fintechmagazine.com/company-reports/ust-and-step-it-up-changing-lives-by-teaching-tech-skills?fbclid=IwAR0S72lUXD9JIMQ2vBbBbTEjW81Mss9W9oyTneRymAVAOrRuw4R1t_fvD_E">
                     <i class="fa fa-microphone fa-lg"></i>
-                    <span class="nav-text">Social Media</span>
+                    <span class="nav-text">SIUA in the News</span>
                 </a>
             </li>
 
@@ -241,20 +241,19 @@
             <li class="darkerli">
                 <a href="life.jsp">
                     <i class="fa fa-glass fa-lg"></i>
-                    <span class="nav-text">Life & Style
+                    <span class="nav-text">Life in Sydney
                     </span>
                 </a>
             </li>
 
         </ul>
 
-        <li>                                 
-            <a href="subjectsList.jsp">
-                <i class="fa fa-user fa-lg"></i>
-                <span class="nav-text">Courses we offer</span>
+        <li>                                   
+            <a href="https://www.ust.com/au">                   
+                <i class="fa fa-lightbulb-o fa-lg"></i>
+                <span class="nav-text">Our Industry Facilitator</span>
             </a>
         </li>
-
 
         <li>
 
@@ -292,7 +291,7 @@
 
                                 <a href="https://twitter.com/share" target="_blank" class="share-popup"><img src="https://cdn1.iconfinder.com/data/icons/metro-ui-dock-icon-set--icons-by-dakirby/512/Twitter_alt.png" width="30px" height="30px"></a>
 
-                                <a href="https://plusone.google.com/_/+1/confirm?hl=en&url=_URL_&title=_TITLE_
+                                <a href="https://www.instagram.com/siua2022sydney/
                                    " target="_blank" class="share-popup"><img src="http://icons.iconarchive.com/icons/danleech/simple/512/google-plus-icon.png" width="30px" height="30px"></a>   
 
                             </div>

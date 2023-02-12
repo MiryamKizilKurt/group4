@@ -26,7 +26,7 @@ public class SqlDB {
         Map<String,String> variables = System.getenv();
         String password = variables.get("dbpassword");
         
-        InputStream propsInputStream = new FileInputStream("C:\\Users\\236358\\Downloads\\group4\\src\\resources\\db.properties");
+        InputStream propsInputStream = new FileInputStream("C:\\Users\\236349\\Documents\\GitHub\\group4\\src\\resources\\db.properties");
 
 
         Properties properties = new Properties();

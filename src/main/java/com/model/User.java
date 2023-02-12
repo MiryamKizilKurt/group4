@@ -2,9 +2,13 @@
 package com.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -14,6 +18,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "user")
 public class User implements Serializable{
+    @XmlElementWrapper(name = "subjects")
+    @XmlElement(name ="subject")
+    private List<Subject> subjects = new ArrayList<>();
     private int ID;
     private String name;
     private String email;
@@ -122,5 +129,9 @@ public class User implements Serializable{
 
     public void setROLE(String ROLE) {
         this.DOB = ROLE;
+    }
+    
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
     }
 }

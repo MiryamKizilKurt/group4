@@ -22,6 +22,9 @@ import javax.xml.bind.JAXBException;
  *
  * @author 236349
  */
+
+// API calls for user(student) object
+
 @Path("userapi")
 public class UserSqlService {
     
@@ -35,6 +38,7 @@ public class UserSqlService {
         return users;
     }
     
+    // To get the list of students(users)
     @GET
     @Path("user/ID/{ID}") //http://localhost:8080/group4/rest/userapi/user/ID/100000
     @Produces(MediaType.APPLICATION_XML)
@@ -47,13 +51,14 @@ public class UserSqlService {
         return users;
     }
     
+    // To add a user(student) by ID
     @GET
     @Path("adduser") //http://localhost:8080/group4/rest/userapi/adduser
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Users addUser() throws JAXBException, FileNotFoundException, ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, IOException {
         
         UserSqlDAO userSqlDAO = new UserSqlDAO(new SqlDBConnector().connection());
-        User user = userSqlDAO.addUser("av", "av.d@university.com", "hello126", "2000-02-02", "student");
+        User user = userSqlDAO.addUser("Terry Fox", "terry.fox@university.com", "hello126", "2000-02-02", "student");
         Users users = new Users();
         users.add(user);
         return users;

@@ -57,7 +57,7 @@
                         </tr>
                         
                     </thead>
-                    <tr><td class="td">Subject ID</td><td><input class="input" type="number" name="deleteSubjectID" placeholder="Enter subject ID to delete" required="deleteSubjectID" onkeypress="clearStatus()" /></td></tr>
+                    <tr><td class="td">Subject ID</td><td><input class="text" pattern="\d*" maxlength="4" name="deleteSubjectID" placeholder="Enter subject ID to delete" required="deleteSubjectID" onkeypress="clearStatus()" /></td></tr>
                     <tr>
                         <td>
                             <input class="btn btn-secondary fs-4" type="submit" value="Delete"/>

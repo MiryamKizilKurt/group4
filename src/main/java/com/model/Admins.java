@@ -8,12 +8,20 @@ package com.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author 236358
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "admins")
 public class Admins implements Serializable{
+    @XmlElement(name = "admin")
+
     private List<Admin> admins = new ArrayList<>();
     
     public Admins() {  }
@@ -36,5 +44,13 @@ public class Admins implements Serializable{
 
     public void setAdmins(List<Admin> admins) {
         this.admins = admins;
-    }    
+    }
+
+    public void addAll(List<Admin> temp){
+        this.admins.addAll(temp);
+    }
+    
+    public void add(Admin admin){
+        this.admins.add(admin);
+    }
 }

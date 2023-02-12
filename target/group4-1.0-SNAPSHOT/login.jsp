@@ -1,4 +1,8 @@
-
+<%-- 
+    Document   : login
+    Created on : 26-Jan-2023, 4:24:52 PM
+    Project authors in alphabetical order: Miryam BOOZARJMEHR, Rashed ELHAM, Priyanka MESHRAM, Abdul Bashir Omar
+--%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -8,6 +12,8 @@
         <title>Login</title>
         <link rel="stylesheet" href="css/system.css"/>
         <script type="text/javascript" src="js/index.js"></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -21,11 +27,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.jsp"><i class='fas fa-arrow-circle-left'></i></a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="subjectsList.jsp">Courses</a>
+                        <a class="nav-link active" href="courses.jsp">Courses we offer</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="login.jsp">Login</a>

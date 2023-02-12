@@ -1,7 +1,7 @@
 <%-- 
     Document   : delete
     Created on : 29-Jan-2023, 9:52:39 AM
-    Author     : 236358
+    Author     : 236349
 --%>
 <%@page import="com.model.dao.AdminSqlDAO"%>
 <%@page import="com.model.dao.UserSqlDAO"%>
@@ -15,6 +15,8 @@
         <title>Delete</title>
         <link rel="stylesheet" href="css/system.css"/>
         <script type="text/javascript" src="js/index.js"></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
@@ -27,13 +29,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.jsp"><i class='fas fa-arrow-circle-left'></i></a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="index.jsp">Home</a>
                     </li>
                  
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/group4/LogoutServlet">Logout</a>
-                    </li>
                 </ul>
 
             </div>
@@ -56,7 +59,7 @@
         <% if(user != null){%>
             <h2 class="center"><%= user.getName()%> Record has been deleted!
                 <%if(emailView != null) {%>
-                   <a class="nav-link active" href="studentList.jsp"><i class='fas fa-arrow-circle-left'></i></a>
+                   <a class="btn btn-outline-secondary fs-4" href="manageStudent.jsp"><i class='fas fa-arrow-circle-left'> Student list </i></a>
                 <%}%>
             </h2>
         <%}else{%>

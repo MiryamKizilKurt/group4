@@ -103,10 +103,6 @@
         <servlet-class>com.controller.DeleteServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AccountServlet</servlet-name>
-        <servlet-class>com.controller.AccountServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>MainServlet</servlet-name>
         <servlet-class>com.controller.MainServlet</servlet-class>
     </servlet>
@@ -157,10 +153,6 @@
     <servlet-mapping>
         <servlet-name>DeleteServlet</servlet-name>
         <url-pattern>/DeleteServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AccountServlet</servlet-name>
-        <url-pattern>/AccountServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MainServlet</servlet-name>

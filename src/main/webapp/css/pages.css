@@ -72,3 +72,9 @@ body
     list-style-type: none;
 }
 
+.social{
+    
+    transform: none;
+    margin: 0px 15px;
+}
+

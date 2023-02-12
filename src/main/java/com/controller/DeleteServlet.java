@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author 236358
  */
+// To delete the user(student) by admin or user(student)
 public class DeleteServlet extends HttpServlet {
 
    

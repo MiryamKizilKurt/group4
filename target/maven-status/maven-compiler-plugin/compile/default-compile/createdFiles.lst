@@ -4,6 +4,7 @@ com\model\dao\UserSqlDAO.class
 com\controller\MainServlet.class
 com\controller\SearchStudentServlet.class
 com\model\Subjects.class
+com\rest\EnrollSubjectSqlService.class
 com\controller\DeleteServlet.class
 com\model\dao\EnrollSubSqlDAO.class
 com\controller\DeleteEnrollSubServlet.class
@@ -22,12 +23,12 @@ com\rest\UserSqlService.class
 com\controller\RegisterServlet.class
 com\controller\AdminRegisterServlet.class
 com\model\Admin.class
+com\rest\AdminSqlService.class
 com\model\dao\SqlDB.class
 com\model\User.class
 com\model\dao\SqlDBConnector.class
 com\controller\EnrollSubjectServlet.class
 com\controller\LogoutServlet.class
-com\controller\AccountServlet.class
 com\controller\UpdateEnrollSubServlet.class
 com\controller\UpdateInfoStudentServlet.class
 com\controller\UpdateStudentServlet.class

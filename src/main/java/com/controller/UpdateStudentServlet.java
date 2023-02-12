@@ -23,6 +23,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author 236358
  */
+
+//To allow the admin to update the student info
+
 public class UpdateStudentServlet extends HttpServlet {
 
 

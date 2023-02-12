@@ -18,6 +18,7 @@ import java.util.List;
  *
  * @author 236358
  */
+
 public class AdminSqlDAO {
      private Statement st;
    
@@ -31,6 +32,15 @@ public class AdminSqlDAO {
          String values = "VALUES('" + name + "','" + email + "','" + password + "','" + dob + "' ,'" + ROLE + "')";
         st.executeUpdate(columns + values);
     }
+    
+    // Add admin Query
+    public Admin addAdmin(String name, String email, String password, String dob, String ROLE) throws SQLException {
+        String columns = "INSERT INTO university.admins(NAME,EMAIL,PASSWORD,DOB,ROLE)";
+         String values = "VALUES('" + name + "','" + email + "','" + password + "','" + dob + "' ,'" + ROLE + "')";
+        st.executeUpdate(columns + values);
+        return new Admin(name, email, password, dob, ROLE);
+    }
+    
      //Read Query - Read One
     public Admin getAdmin(int ID) throws SQLException {
         String query = "SELECT * FROM university.admins WHERE ID=" + ID;
@@ -107,6 +117,7 @@ public class AdminSqlDAO {
         return temp;
     }
     
+        //Query to get the admin by role
         public Admin getRole(String ROLE) throws SQLException {
         String query = "SELECT * FROM university.admins WHERE ROLE='"+ROLE+"'";
         ResultSet rs = st.executeQuery(query);
@@ -124,4 +135,5 @@ public class AdminSqlDAO {
         }
         return null;
     }
+        
 }

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author 236358
  */
+// To logout user(student) and admin
 public class LogoutServlet extends HttpServlet {
 
     

@@ -21,6 +21,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author 236356
  */
+
+// To allow the admin to update the subject/subjects
+
 public class UpdateSubjectServlet extends HttpServlet {
 
 @Override

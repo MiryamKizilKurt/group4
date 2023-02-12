@@ -59,9 +59,9 @@
                     if (subject != null) {
             %>    
             <tr>
-                <td class="td"><%=subject.getID()%></td>
-                <td class="td"><%=subject.getName()%></a></td>
-                <td class="td"><%=subject.getDesc()%></a></td>
+                <td><%=subject.getID()%></td>
+                <td><%=subject.getName()%></a></td>
+                <td><%=subject.getDesc()%></a></td>
             </tr>
 
             <%

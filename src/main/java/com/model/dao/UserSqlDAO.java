@@ -41,6 +41,7 @@ public class UserSqlDAO {
         st.executeUpdate(columns + values);
     }
     
+    // Add user(student) Query
     public User addUser(String name, String email,String password, String dob , String ROLE) throws SQLException{
        String columns = "INSERT INTO university.users(NAME,EMAIL,PASSWORD,DOB,ROLE)";
         String values = "VALUES('" + name + "','" + email + "','" + password + "','" + dob + "' ,'" + ROLE + "')";
@@ -89,6 +90,7 @@ public class UserSqlDAO {
         return null;
     }
     
+     //Query to get the user(student) by role
     public User getRole(String ROLE) throws SQLException {
         String query = "SELECT * FROM university.users WHERE ROLE='"+ROLE+"'";
         ResultSet rs = st.executeQuery(query);

@@ -21,6 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author 236325
  */
+
+// To allow the user(student) to enroll to a subject/list of four subjects
 public class EnrollSubjectServlet extends HttpServlet {
 
 

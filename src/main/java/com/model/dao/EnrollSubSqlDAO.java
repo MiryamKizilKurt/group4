@@ -6,6 +6,7 @@
 package com.model.dao;
 
 import com.model.Subject;
+import com.model.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -63,6 +64,7 @@ public class EnrollSubSqlDAO {
         return null;
     }
     
+     // Query to get the list of enrolled subjects
     public List<Subject> getEnrolledSubs(int ID) throws SQLException{
         String query = "SELECT * FROM university.subjectenrollment WHERE ID=" + ID;
         ResultSet rs = st.executeQuery(query);
@@ -163,9 +165,13 @@ public class EnrollSubSqlDAO {
         deleteEnrolledSubjectSt.setString(4, subToDelete);
         deleteEnrolledSubjectSt.setString(5,Integer.toString(userID));
         int r = deleteEnrolledSubjectSt.executeUpdate();
-        
-
-        
         System.out.println(subToDelete+" Subject "+r+" has been successflly deleted");
+    }
+     
+     public User enrollSubjectWS(String ID, String sub1, String sub2, String sub3, String sub4) throws SQLException {
+        String columns = "INSERT INTO university.subjectenrollment(ID, subject1, subject2, subject3, subject4)";
+        String values = "VALUES('"+ID+"','"+sub1+"','"+sub2+"','"+sub3+"','"+sub4+"')";
+        st.executeUpdate(columns + values);
+       return new User(ID, sub1, sub2, sub3, sub4);
     }
 }

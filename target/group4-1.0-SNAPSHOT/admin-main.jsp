@@ -13,6 +13,8 @@
         <title>Admin view</title>
         <link rel="stylesheet" href="css/system.css"/>
         <script type="text/javascript" src="js/index.js"></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -31,6 +33,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    
                     <li class="nav-item">
                         <a class="nav-link active" href="manageStudent.jsp">Manage Student</a>
                     </li>

@@ -7,11 +7,16 @@ package com.model;
 
 import java.io.Serializable;
 import java.util.Random;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author 236358
  */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "admin")
 public class Admin implements Serializable{
     private int ID;
     private String name;

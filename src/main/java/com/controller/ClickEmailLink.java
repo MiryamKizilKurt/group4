@@ -21,6 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author 236358
  */
+
+// To allow admin to click on the student email for CRUD operations using SqlDB table
 public class ClickEmailLink extends HttpServlet {
 
     @Override

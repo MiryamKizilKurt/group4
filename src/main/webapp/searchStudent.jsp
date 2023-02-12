@@ -4,7 +4,6 @@
     Author     : 236358
 --%>
 
-
 <%@page import="com.model.User"%>
 <%@page import="com.model.dao.UserSqlDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -20,31 +19,31 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
-       <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#" <img src = "css/background.jpg"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#" <img src = "css/background.jpg"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
                             <a class="nav-link active" href="manageStudent.jsp"><i class='fas fa-arrow-circle-left'></i></a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.jsp">Home</a>
-                    </li>
-                  
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/group4/LogoutServlet">Logout</a>
-                    </li>
-                    
-                </ul>
+                        </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.jsp">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/group4/LogoutServlet">Logout</a>
+                        </li>
+
+                    </ul>
+
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
         <table class ="styled-table" id="dataTable" style="margin-left:auto;margin-right:auto;">
             <thead class="thead">
                 <tr>
@@ -57,11 +56,14 @@
             </thead>
             <%
                 try {
-
             %>
-            <%                UserSqlDAO userSqlDAO = (UserSqlDAO) session.getAttribute("userSqlDAO");
-                              int ID = Integer.parseInt(request.getParameter("ID"));
-                              User user = userSqlDAO.getUser(ID);
+            <%
+                String searchError = (String) session.getAttribute("searchError");
+                UserSqlDAO userSqlDAO = (UserSqlDAO) session.getAttribute("userSqlDAO");
+                int ID = Integer.parseInt(request.getParameter("ID"));
+                if (ID < 1000000 && ID > 100000) {
+                    User user = userSqlDAO.getUser(ID);
+                    if (user != null) {
             %>    
             <tr>
                 <td ><%=user.getID()%></td>
@@ -71,6 +73,24 @@
                 <td ><%=user.getROLE()%></a></td>
             </tr>
             <%
+            } else {
+            %>
+            <tr>
+                <th></th>
+                <th><span class="message"><%= (searchError != null) ? searchError : ""%></span></span></th>
+                <th></th>
+            </tr>
+            <%
+                }
+            } else {
+            %>
+            <tr>
+                <th></th>
+                <th><span class="message"><%= (searchError != null) ? searchError : ""%></span></span></th>
+                <th></th>
+            </tr>
+            <%
+                    }
                 } catch (Exception e) {
                     System.out.println(e);
                 }
@@ -81,8 +101,8 @@
         <br>
         <br>
     </body>
-    
-<div class="footer">
-    <p>All Rights Reserved © GROUP 4</p>
-</div>
+
+    <div class="footer">
+        <p>All Rights Reserved © GROUP 4</p>
+    </div>
 </html>

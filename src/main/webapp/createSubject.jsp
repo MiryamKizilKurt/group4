@@ -60,8 +60,8 @@
                         </tr>
                         
                     </thead>
-                    <tr><td class="td">Subject Name</td><td><input class="input" type="text" name="subjectName" placeholder="Enter new subject name" required="subjectName" /></td></tr>
-                    <tr><td class="td">Subject Description</td><td><input class="input" type="text" name="subjectDesc" placeholder="Enter subject description" required="subjectDesc" /></td></tr>
+                    <tr><td class="td">Subject Name</td><td><input class="input" type="text" name="subjectName" placeholder="Enter new subject name"/></td></tr>
+                    <tr><td class="td">Subject Description</td><td><input class="input" type="text" name="subjectDesc" placeholder="Enter subject description"/></td></tr>
                     <tr>
                         <td>
                             <input class="btn btn-outline-secondary fs-4" type="submit" value="Create"/>

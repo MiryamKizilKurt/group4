@@ -23,6 +23,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author 236358
  */
+// To do CRUD operations by admin on subjects
 public class DeleteEnrollSubServlet extends HttpServlet {
 
     
@@ -44,7 +45,7 @@ public class DeleteEnrollSubServlet extends HttpServlet {
             System.out.println(subject.getSubject1());
             
                 if(subject1 != null){
-                    session.setAttribute("delelteEnrollSubError", "Subject1 deleted successfully");
+                    session.setAttribute("delelteEnrollSubError", "Subject 1 deleted successfully");
                     enrollSubSqlDAO.deleteSub(user.getID(), subject1);
                     session.setAttribute("subject", subject);
                     request.getRequestDispatcher("deleteEnrollSub.jsp").include(request, response);
@@ -52,21 +53,21 @@ public class DeleteEnrollSubServlet extends HttpServlet {
                 }
                 
                 if(subject2 != null){
-                    session.setAttribute("delelteEnrollSubError", "Subject2 deleted successfully");
+                    session.setAttribute("delelteEnrollSubError", "Subject 2 deleted successfully");
                     enrollSubSqlDAO.deleteSub(user.getID(), subject2);
                     session.setAttribute("subject", subject);
                     request.getRequestDispatcher("deleteEnrollSub.jsp").include(request, response);
                    
                 }
                 if(subject3 != null){
-                    session.setAttribute("delelteEnrollSubError", "Subject3 deleted successfully");
+                    session.setAttribute("delelteEnrollSubError", "Subject 3 deleted successfully");
                     enrollSubSqlDAO.deleteSub(user.getID(), subject3);
                     session.setAttribute("subject", subject);
                      request.getRequestDispatcher("deleteEnrollSub.jsp").include(request, response);
                      
                 }
                 if(subject4 != null){
-                    session.setAttribute("delelteEnrollSubError", "Subject4 deleted successfully");
+                    session.setAttribute("delelteEnrollSubError", "Subject 4 deleted successfully");
                     enrollSubSqlDAO.deleteSub(user.getID(), subject4);
                     session.setAttribute("subject", subject);
                     request.getRequestDispatcher("deleteEnrollSub.jsp").include(request, response);
