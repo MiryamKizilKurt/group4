@@ -55,7 +55,7 @@ public class AccountServlet extends HttpServlet {
                 }
 
                 user.update(ID, name, email, password, dob, ROLE);
-                userSqlDAO.update(name, password, dob, ID);
+                //userSqlDAO.update(name, password, dob, ID);
                 session.setAttribute("user", user);
                 
 

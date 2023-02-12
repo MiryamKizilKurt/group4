@@ -34,6 +34,10 @@ public class RegisterServlet extends HttpServlet {
             HttpSession session = request.getSession();
             UserSqlDAO userSqlDAO = (UserSqlDAO) session.getAttribute("userSqlDAO");
             AdminSqlDAO adminSqlDAO = (AdminSqlDAO) session.getAttribute("adminSqlDAO");
+            String emailRegEx = "([a-zA-Z]+)[._-]([a-zA-Z]+)@university.com";
+            String passRegEx = "[a-z]{5,15}\\d{1,3}";
+            String nameRegEx = "^[a-zA-Z ]+$";
+
             String name = request.getParameter("name");
             String email = request.getParameter("email");
             String password = request.getParameter("password");
@@ -54,18 +58,34 @@ public class RegisterServlet extends HttpServlet {
             
             User userSql = userSqlDAO.getUser(email);
             Admin adminSql = adminSqlDAO.getAdmin(email);
+            
+            if(!name.matches(nameRegEx)){
+                session.setAttribute("nameError", "Incorrect name format");//TODO - Create subjectError somewhere, refer AdminRegisterServlet
+                response.sendRedirect("register.jsp");
+            }
+            else if(!email.matches(emailRegEx) && !password.matches(passRegEx)){
+                session.setAttribute("emailError", "Incorrect email format");
+                session.setAttribute("passError", "Incorrect password format");
+                response.sendRedirect("register.jsp");                       
+            }else if(!email.matches(emailRegEx)){               
+                session.setAttribute("emailError", "Incorrect email format");
+                response.sendRedirect("register.jsp");                
+            }else if(!password.matches(passRegEx)){
+                session.setAttribute("passError", "Incorrect password format");
+                response.sendRedirect("register.jsp");                       
+            }
 
-            if (userSql != null) {
+            else if (userSql != null) {
                session.setAttribute("error", "Student already exists");
                request.getRequestDispatcher("register.jsp").include(request, response);
             }
             
-            if (adminSql != null) {
+            else if (adminSql != null) {
                session.setAttribute("error", "Admin already exists");
                request.getRequestDispatcher("register.jsp").include(request, response);
             }
             
-            if (date.before(sqlStartDate) || date.after(sqlFinalDate)) {
+            else if (date.before(sqlStartDate) || date.after(sqlFinalDate)) {
                 session.setAttribute("dobError", "Age must be between 18 and 50 years old");
                 request.getRequestDispatcher("register.jsp").include(request, response);                
                 

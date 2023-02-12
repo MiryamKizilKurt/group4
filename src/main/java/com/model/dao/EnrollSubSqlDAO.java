@@ -24,11 +24,12 @@ public class EnrollSubSqlDAO {
     private PreparedStatement deleteSt;
     private String deleteQuery = "DELETE FROM university.subjectenrollment WHERE ID=?";
     private PreparedStatement deleteEnrolledSubjectSt;
-    private String deleteEnrollSubjectQuery = "UPDATE university.subjectEnrollment "
+    private String deleteEnrollSubjectQuery = "UPDATE university.subjectenrollment "
             + "SET subject1 = CASE WHEN subject1=? THEN subject1 = NULL ELSE subject1 END, "
             + "subject2 = CASE WHEN subject2=? THEN subject2 = NULL ELSE subject2 END, "
             + "subject3 = CASE WHEN subject3=? THEN subject3 = NULL ELSE subject3 END, "
-            + "subject4 = CASE WHEN subject4=? THEN subject4 = NULL ELSE subject4 END;";
+            + "subject4 = CASE WHEN subject4=? THEN subject4 = NULL ELSE subject4 END "
+            + "WHERE ID=?;";
     
     public EnrollSubSqlDAO(java.sql.Connection connection) throws SQLException {
         this.st = connection.createStatement();
@@ -155,18 +156,16 @@ public class EnrollSubSqlDAO {
     }
 
     //Delete Query - by ID
-    public void delete(int deletesubjectID) throws SQLException{
-        Subject subject = getSubject(deletesubjectID);
-        String subjectName = subject.getName();
-        deleteEnrolledSubjectSt.setString(1, subjectName);
-        deleteEnrolledSubjectSt.setString(2, subjectName);
-        deleteEnrolledSubjectSt.setString(3, subjectName);
-        deleteEnrolledSubjectSt.setString(4, subjectName);
+     public void deleteSub(int userID, String subToDelete) throws SQLException{
+        deleteEnrolledSubjectSt.setString(1, subToDelete);
+        deleteEnrolledSubjectSt.setString(2, subToDelete);
+        deleteEnrolledSubjectSt.setString(3, subToDelete);
+        deleteEnrolledSubjectSt.setString(4, subToDelete);
+        deleteEnrolledSubjectSt.setString(5,Integer.toString(userID));
         int r = deleteEnrolledSubjectSt.executeUpdate();
         
-        deleteSt.setString(1, ""+deletesubjectID);
-        int r1 = deleteSt.executeUpdate();
+
         
-        System.out.println("Row "+r1+" has been successflly deleted");
+        System.out.println(subToDelete+" Subject "+r+" has been successflly deleted");
     }
 }

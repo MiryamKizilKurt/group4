@@ -46,11 +46,15 @@ public class CreateSubjectServlet extends HttpServlet {
                 session.setAttribute("subjectError", "Subject already exists");
                 request.getRequestDispatcher("createSubject.jsp").include(request, response);
                 
-            }else{
+            }else if (subjectDesc.isEmpty()) {
+                session.setAttribute("subjectError", "Subject Description cannot be empty");
+                request.getRequestDispatcher("createSubject.jsp").include(request, response);
+            }
+            else{
                 subjectSqlDAO.create(subjectName, subjectDesc);
                 Subject subject = subjectSqlDAO.getSubject(subjectName);
                 session.setAttribute("subject", subject);
-                session.setAttribute("subjectError", "Subject creates successfully");
+                session.setAttribute("subjectError", "Subject created successfully");
                 request.getRequestDispatcher("createSubject.jsp").include(request, response);
             }
         } catch (SQLException ex) {

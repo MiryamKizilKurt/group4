@@ -151,6 +151,7 @@ public class UserSqlDAO {
         updateSt.setString(3, dob);
         updateSt.setString(4, Integer.toString(ID));
         int row = updateSt.executeUpdate();
+        
         System.out.println("Row "+row+" has been successflly updated");
         
     }

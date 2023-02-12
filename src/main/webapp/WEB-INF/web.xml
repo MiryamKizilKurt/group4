@@ -8,6 +8,26 @@
         <servlet-name>UpdateEnrollSubServlet</servlet-name>
         <servlet-class>com.controller.UpdateEnrollSubServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateStudentInfoServlet</servlet-name>
+        <servlet-class>UpdateStudentInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateInfoStudentServlet</servlet-name>
+        <servlet-class>com.controller.UpdateInfoStudentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteEnrollSubServlet</servlet-name>
+        <servlet-class>com.controller.DeleteEnrollSubServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchStudentServlet</servlet-name>
+        <servlet-class>com.controller.SearchStudentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchSubjectServlet</servlet-name>
+        <servlet-class>com.controller.SearchSubjectServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InitServlet</servlet-name>
         <url-pattern>/InitServlet</url-pattern>
@@ -19,6 +39,26 @@
     <servlet-mapping>
         <servlet-name>UpdateEnrollSubServlet</servlet-name>
         <url-pattern>/UpdateEnrollSubServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateStudentInfoServlet</servlet-name>
+        <url-pattern>/UpdateStudentInfoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateInfoStudentServlet</servlet-name>
+        <url-pattern>/UpdateInfoStudentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteEnrollSubServlet</servlet-name>
+        <url-pattern>/DeleteEnrollSubServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchStudentServlet</servlet-name>
+        <url-pattern>/SearchStudentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchSubjectServlet</servlet-name>
+        <url-pattern>/SearchSubjectServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

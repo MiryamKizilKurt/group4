@@ -1,0 +1,199 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10-Feb-2023, 6:57:09 PM
+    Author     : 236349
+*/
+
+body  
+{  
+    background: url(background.jpg)no-repeat center center fixed;
+    margin: 0;  
+    padding: 0;  
+    font-family: 'Arial'; 
+    opacity: 0.9;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}  
+
+.navbar{
+    background-color: white;
+    height: 50px;
+    opacity: 0.9;
+    box-shadow: 0px 2px 5px #777;
+    margin-left: auto;
+    list-style-type: none;
+}
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: graytext;
+    font-size: 25px;
+    padding: 3px;
+    text-align: center;
+    color: white;
+ 
+}
+
+.login{  
+        width: 500px;  
+        overflow: hidden;  
+        margin: auto;  
+        margin: 20 0 0 450px;  
+        padding: 80px;  
+        background: #D0956B;  
+        border-radius: 15px ;  
+          
+}
+
+h1{
+    text-align: center;
+}
+
+h2{  
+    text-align: center;  
+    color: black;  
+    padding: 20px;  
+}  
+label{  
+    color: #E4E3DF;  
+    font-size: 17px;  
+}  
+#Uname{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}  
+#Pass{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+      
+}  
+#log{  
+    width: 150px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;  
+    color: black;  
+  
+  
+}  
+span{  
+    color: white;  
+    font-size: 17px;  
+}  
+a{  
+    float: right;  
+    
+}  
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 45px 0;
+    font-size: 1.5em;
+    font-family: sans-serif;
+    min-width: 50%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: #D0956B;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 10px 20px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #D0956B;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #D0956B;
+}
+
+.cols {
+  column-span: 2px;
+}
+
+caption{
+    font-size: 34px;
+    padding: 15px; 
+ 
+    border: solid 1px;
+    color: red;
+    border-color: black;
+}
+
+.message{       
+    color: red;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.input{
+    background-color: white;
+    color: #000;
+    font-size: 16px;
+    width: 100%;
+    letter-spacing: 2px;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 10px;
+}
+.input:hover {
+    background-color: #D0956B;
+    color: white;
+}
+
+.input:active {
+    background-color: blue;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.searchbox{
+    background-color:blue;
+    color: cornsilk;
+    font-size: 16px;
+    width: 20%;
+    letter-spacing: 2px;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+
+.td{
+    width: 30%;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    opacity: 0.5;
+    margin: 10px;
+}
+
+
+

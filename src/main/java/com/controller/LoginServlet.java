@@ -72,7 +72,7 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("admin-main.jsp").include(request, response);
         
         }else{
-            session.setAttribute("error", "Account Does not Exist!");
+            session.setAttribute("error", "Account does not exist!");
             request.getRequestDispatcher("login.jsp").include(request, response);
            // request.getRequestDispatcher("welcome.jsp").include(request, response);
 

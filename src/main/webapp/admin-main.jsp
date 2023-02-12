@@ -4,45 +4,55 @@
     Author     : 236358
 --%>
 <%@page import="com.model.Admin"%>
-<%@include file="footer.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>User-Main</title>
-        <link rel="stylesheet" href="css/layout.css"/>
+
+        <title>Admin view</title>
+        <link rel="stylesheet" href="css/system.css"/>
         <script type="text/javascript" src="js/index.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    </head>
+
+    <a class="site-identity" href="#" <img src = "css/logo.jpg"></a>
+</head>
     <body>
         <% 
             
             Admin admin= (Admin)session.getAttribute("admin");
         %>
-        <nav class="navbar navbar-dark bg-orange">
-            <div class="contianer-fluid">
-                <div class="navbar-header">
-                    <table>
-                        <tr>
-                            <td><h1 class="header">University</h1></td>
-                            <td><a class="button" href="addStudent.jsp">Add Student</a></td>
-                            <td><a class="button" href="studentsList.jsp">Student List</a></td>
-                            <td><a class="button" href="subjectsList.jsp">Subject Management</a></td>
-                            <td><a class="button" href="/group4/LogoutServlet">Logout</a></td>
-                        </tr>                                                              
-                    </table>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" <img src = "css/background.jpg"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="manageStudent.jsp">Manage Student</a>
+                    </li>
                     
-                </div>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="subjectsList.jsp">Subject Management</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/group4/LogoutServlet">Logout</a>
+                    </li>
+                </ul>
+
             </div>
-        </nav>
+        </div>
+    </nav>
+
         <h1></h1>
         <div>
-            <table class="center">
+            <table class ="styled-table" style="margin-left:auto;margin-right:auto;">
                 <thead class="thead">
                     <th></th>
-                    <th>Welcome Admin</th>
+                    <th>Welcome <%= admin.getName()%></th>
                     <th></th>
                 </thead>
                 <tr><td>Name: </td><td><%= admin.getName()%></td></tr>
@@ -52,3 +62,6 @@
         </div>
     </body>
 </html>
+<div class="footer">
+    <p>All Rights Reserved © GROUP 4</p>
+</div>

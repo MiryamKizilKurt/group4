@@ -4,42 +4,54 @@
     Author     : 236356
 --%>
 
-<%@include file="footer.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <title>Create Subject</title>
-        <link rel="stylesheet" href="css/layout.css"/>
+        <title>Create subject</title>
+        <link rel="stylesheet" href="css/system.css"/>
         <script type="text/javascript" src="js/index.js"></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    </head>
-    <body onload="startTime()">
-        <nav class="navbar navbar-dark bg-orange">
-            <div class="contianer-fluid">
-                <div class="navbar-header">
-                    <!--                    <table>
-                                            <tr>
-                                                <td><h1 class="header">University</h1></td>
-                                                <td><a class="button" href="admin-main.jsp">GoBack</a></td>
-                                                <td><a class="button" href="index.jsp">Home</a></td>
-                                                <td><a class="button" href="/group4/LogoutServlet">logout</a></td>
-                                            </tr>                                                              
-                                        </table>-->
 
-                </div>
+    <a class="site-identity" href="#" <img src = "css/logo.jpg"></a>
+</head>
+    <body onload="startTime()">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" <img src = "css/background.jpg"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                            <a class="nav-link active" href="subjectsList.jsp"><i class='fas fa-arrow-circle-left'></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.jsp">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="course.jsp">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.jsp">Logout</a>
+                    </li>
+                </ul>
+
             </div>
-        </nav>
+        </div>
+    </nav>
         <%
             String subjectError = (String) session.getAttribute("subjectError");
         %>
 
         <div>
             <form class="" method="POST" action="/group4/CreateSubjectServlet">
-                <table class ="tab">
+            <table class ="styled-table" style="margin-left:auto;margin-right:auto;">
                     <thead class="thead">
                         <tr>
                             <th></th>
@@ -52,8 +64,10 @@
                     <tr><td class="td">Subject Description</td><td><input class="input" type="text" name="subjectDesc" placeholder="Enter subject description" required="subjectDesc" /></td></tr>
                     <tr>
                         <td>
-                            <input class="button tabButton" type="submit" value="Create"/>
-                            <a class="button tabButton" href="subjectsList.jsp">Close</a>
+                            <input class="btn btn-outline-secondary fs-4" type="submit" value="Create"/>
+                        </td>
+                        <td>
+                            <a class="btn btn-outline-secondary fs-4" href="subjectsList.jsp">Close</a>
                         </td>
                     </tr>
                     <tr>
@@ -70,3 +84,6 @@
         </div>
     </body>
 </html>
+<div class="footer">
+    <p>All Rights Reserved © GROUP 4</p>
+</div>

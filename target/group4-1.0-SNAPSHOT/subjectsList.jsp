@@ -11,81 +11,89 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Subject Management</title>
-        <link rel="stylesheet" href="css/layout.css"/>
+
+        <title>Subject management</title>
+        <link rel="stylesheet" href="css/system.css"/>
         <script type="text/javascript" src="js/index.js"></script>
+        <script src='https://kit.fontawesome.com/a076d05399.js'></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    </head>
-    <body>
-        <nav class="navbar navbar-dark bg-orange">
-            <div class="contianer-fluid">
-                <div class="navbar-header">
-                    <table>
-                        <tr>
-                            <td><h1 class="header">University</h1></td>
-                            <td><a class="button" href="index.jsp">Home</a></td>
-                            <td><a class="button" href="createSubject.jsp">Create Subject</a></td>
-                            <td><a class="button" href="updateSubject.jsp">Update Subject</a></td>
-                            <td><a class="button" href="deleteSubject.jsp">Delete Subject</a></td>
-                            <td><a class="button" href="/group4/LogoutServlet">Logout</a></td>
-                        </tr>                                                              
-                    </table>
-                </div>
-            </div>
-            <input class="searchbox" id="nameInput" onkeyup="search()" type="text" placeholder="Search by Name">
-        </nav>
-        <table class ="tab" id="dataTable">
-            <thead class="thead">
-                <tr>
-                    <th>Subject ID</th>
-                    <th>Subject Name</th>
-                    <th>Subject Description</th>
-                </tr>
-            </thead>
-            <%
-                try {
 
-            %>
-            <% 
-                SubjectSqlDAO subjectSqlDAO = (SubjectSqlDAO) session.getAttribute("subjectSqlDAO");
-                for (Subject subject : subjectSqlDAO.getSubjects()) {
-            %>    
-            <tr>
-                <td class="td"><%=subject.getID()%></td>
-                <td class="td"><%=subject.getName()%></a></td>
-                <td class="td"><%=subject.getDesc()%></a></td>
-             </tr>
-            <%
-                    }
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
-            %>
+    <a class="site-identity" href="#" <img src = "css/logo.jpg"></a>
+</head>
+<form method="POST" action="/group4/SearchSubjectServlet">
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" <img src = "css/background.jpg"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                            <a class="nav-link active" href="admin-main.jsp"><i class='fas fa-arrow-circle-left'></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.jsp">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="createSubject.jsp">Create subject</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="updateSubject.jsp">Update subject</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="deleteSubject.jsp">Delete subject</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.jsp">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <td ><input class="input" type="text" pattern="\d*" maxlength="4" name="subjectID" placeholder="Search by ID"></td>
+                </li>
+                <li class="nav-item">
+                    <td><input class="btn btn-dark fs-4" type="submit" value="Search"></td>
+                </li>
+            </ul>
 
-        </table>
-        <br>
-        <br>
-        <br>
-        <script>
-            function search() {
-                var input, filter, table, tr, td, i, txtValue;
-                input = document.getElementById("nameInput");
-                filter = input.value.toUpperCase();
-                table = document.getElementById("dataTable");
-                tr = table.getElementsByTagName("tr");
-                for (i=0; i < tr.length; i++) {
-                    td = tr[i].getElementsByClassName("td")[1];
-                    if (td) {
-                        txtValue = td.textContent || td.innerText;
-                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                            tr[i].style.display = "";
-                        } else {
-                            tr[i].style.display = "none";
-                        }
-                    }
-                }
+        </div>
+    </div>
+</nav>
+<table class ="styled-table" id="dataTable" style="margin-left:auto;margin-right:auto;">
+    <thead class="thead">
+        <tr>
+            <th>Subject ID</th>
+            <th>Subject Name</th>
+            <th>Subject Description</th>
+        </tr>
+    </thead>
+    <%
+        try {
+
+    %>
+    <%  SubjectSqlDAO subjectSqlDAO = (SubjectSqlDAO) session.getAttribute("subjectSqlDAO");
+        for (Subject subject : subjectSqlDAO.getSubjects()) {
+    %>    
+    <tr>
+        <td ><%=subject.getID()%></td>
+        <td ><%=subject.getName()%></a></td>
+        <td ><%=subject.getDesc()%></a></td>
+    </tr>
+    <%
             }
-    </script>
-    </body>
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    %>
+
+</table>
+</form>
+<br>
+<br>
+<br>
+
+</body>
 </html>
+<div class="footer">
+    <p>All Rights Reserved © GROUP 4</p>
+</div>

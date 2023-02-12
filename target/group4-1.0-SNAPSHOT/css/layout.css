@@ -140,9 +140,18 @@ td {
     opacity: 0.5;
 }
 
-.navbar{
+/*.navbar{
     background-color: #111900;
     opacity: 0.5;
+}*/
+
+.navbar{
+    background-color: white;
+    height: 50px;
+    opacity: 0.9;
+    box-shadow: 0px 2px 5px #777;
+    margin-left: auto;
+    list-style-type: none;
 }
 
 h1{
@@ -181,3 +190,4 @@ h1{
     border-radius: 5px;
     padding: 5px;
 }
+
