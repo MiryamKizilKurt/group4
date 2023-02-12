@@ -45,7 +45,7 @@ public class CreateSubjectServlet extends HttpServlet {
             response.sendRedirect("createSubject.jsp");
             }
             
-            if(!subjectName.matches(subjectNameRegEx)){
+            else if(!subjectName.matches(subjectNameRegEx)){
                 session.setAttribute("subjectError", " "+subjectName+" - Incorrect Subject format");
                 response.sendRedirect("createSubject.jsp");
             }

@@ -44,7 +44,12 @@ public class UpdateSubjectServlet extends HttpServlet {
             Subject getOldSubject = subjectSqlDAO.getSubject(oldSubjectName);
             Subject getNewSubject = subjectSqlDAO.getSubject(newSubjectName);
             
-            if(!oldSubjectName.matches(subjectNameRegEx)){
+            if (getOldSubject == null){
+            session.setAttribute("subjectError", oldSubjectName + " " + " - Subject does not exist");
+            response.sendRedirect("updateSubject.jsp");
+            }
+        
+            else if(!oldSubjectName.matches(subjectNameRegEx)){
                 if(!newSubjectName.matches(subjectNameRegEx)){
                     session.setAttribute("subjectError", oldSubjectName + " " + newSubjectName + " " + " - Incorrect Subject format");
                     response.sendRedirect("updateSubject.jsp");
